@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
     <meta charset="UTF-8">
     	 <!--
@@ -9,7 +9,7 @@
 	 -->
       <title> Murphy's World </title>
 	   <p style = "font-size: 30pt; color: red;"> Welcome to Murphy's World! </p>
-	     <p style = color: blue;">
+	     <p style = "color: blue;">
 	     <h3> <a href= mailto:ruth.murphy1@marist.edu> Send bug reports to Ruth Murphy</a></h3>
    
        <script type="text/javascript">
@@ -169,18 +169,29 @@
          // Creation of text box for target(case) and provide message
          // also include the value of the score.
          //
-         function displayMessage(msg) {
+          function displayMessage(msg) {
             var target = document.getElementById("taMain");
             target.value = msg + "\n\n" + target.value;
-         }
+         } 
       </script> 
+    
     <!-- when page loads, use initialization values for the box -->
 
-  <!-- <body onload="init();> -->
+    <!-- <body onload="init();> -->
 
-      <!-- set text area box size and text
-       -->
-       <textarea id="taMain" rows="8" cols="32"> You are in front of a yellow building. </textarea>
+      <!-- set text area box size and text -->
+      
+     <textarea id="taMain" rows="8" cols="32"> </textarea>
+
+       <br>
+       Command:
+       <input type="text"
+               id ="txtCommand"
+               name="txtCommand">
+
+       <input type="button"
+              value="Go"
+              onclick="btnGo_click();"/>
 
        <br>
        <input type="button" 
