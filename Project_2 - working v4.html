@@ -147,8 +147,9 @@
                  if (currentLoc === 0) {
                     score = score + 5;
                     beenHere0 = true;
-              }
-                 else if ( (! beenHere1) && (currentLoc === 1 ) ) {
+               }
+                 
+              } else if ( (! beenHere1) && (currentLoc === 1 ) ) {
                       score =score + 5;
                       beenHere1 = true;
               }
@@ -164,7 +165,7 @@
                       score = score + 5;
                       beenHere4 = true;
              }
-                 
+            }     
          //
          // Creation of text box for target(case) and provide message
          // also include the value of the score.
@@ -174,11 +175,12 @@
             target.value = msg + "\n\n" + target.value;
          } 
       </script> 
-    
+    <!-- </head>
+    -->
     <!-- when page loads, use initialization values for the box -->
 
-    <!-- <body onload="init();> -->
-
+    <!-- <body onload="init();">
+    -->
       <!-- set text area box size and text -->
       
      <textarea id="taMain" rows="8" cols="32"> </textarea>
