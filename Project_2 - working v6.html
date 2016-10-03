@@ -5,12 +5,17 @@
     	 <!--
 	    Ruth Murphy
 	    September 26, 2016
-	    Project 2
+	    Project 2 - Start the creation of a game.
 	 -->
+
+       <!-- Browser Tab Title -->
       <title> Murphy's World </title>
+
+          <!-- set up style for the page title and link to email me for errors -->
 	   <p style = "font-size: 30pt; color: red;"> Welcome to Murphy's World! </p>
 	     <p style = "color: blue;">
 	     <h3> <a href= mailto:ruth.murphy1@marist.edu> Problem? Click here to send errors to Ruth Murphy</a></h3>
+
        <script type="text/javascript">
 
          //
@@ -27,7 +32,7 @@
          var beenHere4 = false;
                   
          //
-         // Initialization function for executing Look Function
+         // Initialization function for executing Look Function to check where player is
          //
          function init() {
             look();
@@ -35,12 +40,8 @@
          
          //
          // Functions for direction buttons to handle the click action by user
-         // ie: First Action pressing north 
-         // when loc is at 0 is set to loc 1 then executes look function
-         // otherwise it looks to see if loc is 3 and sets it to 0 and executes look
-         // 
-         // 
-         // any other direction and an error is handled
+         // ie: First Action pressing north will bring the user/ player to location 1 from 0
+         // when loc is at 4, player moved to location 2.  Otherwise an error message is put in text box.
          //         
          function btnGo_North_click() {
             if (currentLoc === 0) {
@@ -99,7 +100,8 @@
          }
 
        // 
-       // Set up of Locations that will be displayed for the user.
+       // Set up of Locations that will be displayed for the user/player.
+       // used with button function and message functions to display the correct location to the user.
        //
          function look() {
             var desc = "";
@@ -118,7 +120,7 @@
             }
 
            //
-           // check the score to evaluate if we have to add 5.
+           // Function to print the location and the score to screen for the user.
            //
             scoreEval();
             desc = desc + "\n" +"Your Score is: " + score;
@@ -126,7 +128,10 @@
          }
 
           //
-          // Function to check an error in direction.  Ie a wall has been reached
+          // Function to check an error in direction.  Ie: a wall has been reached
+          // The first time a user goes to a location that is not configured for the button, they get 
+          // the message that they should try another direction.  After multiple times with no valid
+          // direction, a new message is shown to rethink what they are doing.
           //
            function directionError() {
             directionErrorCount = directionErrorCount + 1;
@@ -139,7 +144,9 @@
 
             //
             // Function to check the score to decide if 5 needs to be added.
-            // Do the calculation and update the score variable if needed
+            // Do the calculation and update the score variable if needed.
+            // It checks to see if the user has been to the location already.  
+            // if so, then they do not get more points.
             //
               function scoreEval() {
                if ( (! beenHere0)  && (currentLoc === 0) ) {
@@ -164,7 +171,7 @@
              }
             }     
          //
-         // Creation of text box for target(case) and provide message
+         // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
          //
           function displayMessage(msg) {
@@ -172,23 +179,16 @@
             target.value = msg + "\n\n\n" + target.value ;
          } 
       </script> 
-    <!-- </head>
-    -->
-    <!-- when page loads, use initialization values for the box -->
-
-    <!-- <body onload="init();">
-    -->
-      <!-- set text area box size and text -->
-      
+    
+      <!-- Set text area box size, background, text formatting and a starting location for the user -->
       <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
                rows="8"
                cols="55"
                id="taMain"
                name="taMain"> You have just entered a yellow house. Press any button.
-     </textarea>
+      </textarea>
      
-       <br>
-      
+      <!-- Create buttons for the user to press -->  
        <br>
        <input type="button" 
               value="Go North"
@@ -202,5 +202,5 @@
        <input type="button" 
               value="Go West"
               onclick="btnGo_West_click();">
-</body>
+  </body>
 </html>
