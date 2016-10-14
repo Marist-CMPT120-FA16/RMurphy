@@ -45,7 +45,9 @@
          // Functions for direction buttons to handle the click action by user
          // ie: First Action pressing North will bring the user/ player to location 1 from 0
          // when loc is at 4, player moved to location 2.  Error message is put in text box if no valid location is picked for that button
-         //         
+         //  
+         // 10-14-16  - to hit all 6 locations from 0 => solution is N,W,S,W,N,N == 0,1,3,5,4,2,6)
+         //       
          function btnGo_North_click() {
             if (currentLoc === 0) {
                currentLoc = 1;
@@ -108,8 +110,13 @@
                    if (currentLoc === 3) {
                       currentLoc = 1;
                       look();
-                   } else {
-                   directionError(); 
+                 } else {
+                    if (currentLoc === 1) {
+                       currentLoc = 5;
+                       look();
+                     } else {
+                      directionError(); 
+               }
               }
              }
             }
@@ -127,8 +134,13 @@
                  if (currentLoc === 1) {
                    currentLoc = 3;
                    look();
-                 } else {
-                   directionError(); 
+                  } else {
+                    if (currentLoc === 5) {
+                       currentLoc = 1;
+                       look();
+                   } else {
+                     directionError(); 
+               }
               }
              }              
             }
