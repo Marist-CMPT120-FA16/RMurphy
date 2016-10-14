@@ -164,6 +164,23 @@
          function look() {
             var desc = "";
             switch(currentLoc) {
+               case 0: frontDr();
+                    break;
+               case 1: kitchen();
+                    break;
+               case 2: tunnel();
+                    break;
+               case 3: roomDoor();
+                    break;
+               case 4: pool();
+                    break;
+               case 5: dirtRoom();
+                    break;
+               case 6: dante();
+                    break;
+               default: desc = " You can not go that way";
+            }
+         }
 
        <--  Comment out the Project 2 case statements so I can create functions for the locations
 
@@ -176,9 +193,9 @@
                case 3: desc = "3. You are in a room with a dirt floor and a table.  On the table is an odd key.";
                        break;
                case 4: desc = "4. Welcome to Dante's Cave!";  
-        -->
                        break;
                default: desc = "default. You have entered a yellow house";
+         -->
             }
 
            //
