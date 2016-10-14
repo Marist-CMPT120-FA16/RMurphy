@@ -69,8 +69,18 @@
                  currentLoc = 4;
                  look();
               } else {
+               if (currentLoc === 3){
+                 currentLoc = 5;
+                 look();
+                } else {
+                  if (currentLoc === 5){
+                   currentLoc = 3;
+                   look(); 
+                   } else {
                  directionError();               
+               } 
               }
+             }
             }
          }
 
