@@ -89,26 +89,36 @@
                currentLoc = 3;
                look();
             } else {
-              if (currentLoc === 3) {
-                 currentLoc = 1;
+              if (currentLoc === 5) {
+                 currentLoc = 4;
                  look();
-              } else {
-                 directionError(); 
+               } else {
+                   if (currentLoc === 3) {
+                      currentLoc = 1;
+                      look();
+                   } else {
+                   directionError(); 
               }
+             }
             }
          }
 
          function btnGo_West_click() {
-            if (currentLoc === 3) {
+            if (currentLoc === 4) {
+                   currentLoc = 5;
+                   look();
+             } else {
+               if (currentLoc === 3) {
                currentLoc = 2;
                look();
-            } else {
-              if (currentLoc === 1) {
-                 currentLoc = 3;
-                 look();
-              } else {
-                 directionError(); 
+               } else {
+                 if (currentLoc === 1) {
+                   currentLoc = 3;
+                   look();
+                 } else {
+                   directionError(); 
               }
+             }              
             }
          }
 
