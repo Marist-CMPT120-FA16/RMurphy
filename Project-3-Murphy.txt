@@ -42,6 +42,17 @@
          }
          
          //
+         // Command Button handler for input by user.
+         // trim off extra spaces, make sure all charaters are lower case, starting at 0 on the line, grab 1 charater
+         //
+         function buttonGo() {
+             var command = document.getElementById("txtCommand").value;
+                 command = command.trim();
+                 command = command.toLowerCase();
+                 command = command substr(0,1);
+                 displayMessage(command);
+         }
+         //
          // Functions for direction buttons to handle the click action by user
          // ie: First Action pressing North will bring the user/ player to location 1 from 0
          // when loc is at 4, player moved to location 2.  Error message is put in text box if no valid location is picked for that button
@@ -153,6 +164,9 @@
          function look() {
             var desc = "";
             switch(currentLoc) {
+
+       <--  Comment out the Project 2 case statements so I can create functions for the locations
+
                case 0: desc = "0. You walk through the door and see a kitchen";
                        break;
                case 1: desc = "1. You have entered a very long tunnel";
@@ -161,7 +175,8 @@
                        break;
                case 3: desc = "3. You are in a room with a dirt floor and a table.  On the table is an odd key.";
                        break;
-               case 4: desc = "4. Welcome to Dante's Cave!";
+               case 4: desc = "4. Welcome to Dante's Cave!";  
+        -->
                        break;
                default: desc = "default. You have entered a yellow house";
             }
