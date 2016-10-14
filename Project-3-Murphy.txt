@@ -44,7 +44,7 @@
          //
          // Functions for direction buttons to handle the click action by user
          // ie: First Action pressing North will bring the user/ player to location 1 from 0
-         // when loc is at 4, player moved to location 2.  Otherwise an error message is put in text box.
+         // when loc is at 4, player moved to location 2.  Error message is put in text box if no valid location is picked for that button
          //         
          function btnGo_North_click() {
             if (currentLoc === 0) {
@@ -53,10 +53,21 @@
             } else {
               if (currentLoc === 4) {
                  currentLoc = 2;
-                 look();            
-              } else {
-                directionError(); 
+                 look();  
+               } else {
+                  if (currentLoc === 5){
+                   currentLoc = 3;
+                   look();  
+                 } else {
+                   if (currentLoc === 2) {
+                    currentLoc = 6;
+                    look();         
+                     } else {
+                    directionError(); 
+                }
+               }
               }
+             }
             }            
          }
 
@@ -72,12 +83,13 @@
                if (currentLoc === 3){
                  currentLoc = 5;
                  look();
-                } else {
-                  if (currentLoc === 5){
-                   currentLoc = 3;
-                   look(); 
+               } else {
+                if (currentLoc === 6) {
+                 currentLoc = 2;
+                 look();
                    } else {
                  directionError();               
+                }
                } 
               }
              }
@@ -105,8 +117,8 @@
 
          function btnGo_West_click() {
             if (currentLoc === 4) {
-                   currentLoc = 5;
-                   look();
+                currentLoc = 5;
+                look();
              } else {
                if (currentLoc === 3) {
                currentLoc = 2;
