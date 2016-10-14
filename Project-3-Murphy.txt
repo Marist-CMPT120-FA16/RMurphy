@@ -182,6 +182,14 @@
             }
          }
 
+          function frontDr() {
+             var desc = "0. You walk through the door and see a kitchen";
+             scoreEval();
+             desc = desc + "\n" + "Score: " + score ;
+             displayMessage(desc);
+          }
+
+
        <--  Comment out the Project 2 case statements so I can create functions for the locations
 
                case 0: desc = "0. You walk through the door and see a kitchen";
@@ -196,8 +204,6 @@
                        break;
                default: desc = "default. You have entered a yellow house";
          -->
-            }
-
            //
            // Function to print the location and the score to screen for the user.
            //
