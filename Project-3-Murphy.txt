@@ -183,7 +183,44 @@
          }
 
           function frontDr() {
-             var desc = "0. You walk through the door and see a kitchen";
+             var desc = "0. You are in front of a yellow building";
+             scoreEval();
+             desc = desc + "\n" + "Score: " + score ;
+             displayMessage(desc);
+          }
+
+         function kitchen() {
+             var desc = "1. You walk through the door and see a kitchen";
+             scoreEval();
+             desc = desc + "\n" + "Score: " + score ;
+             displayMessage(desc);
+          }
+          function tunnel() {
+             var desc = "2. You have entered a very long tunnel";
+             scoreEval();
+             desc = desc + "\n" + "Score: " + score ;
+             displayMessage(desc);
+          }
+          function roomDoor() {
+             var desc = "3. You enter a room with a door.";
+             scoreEval();
+             desc = desc + "\n" + "Score: " + score ;
+             displayMessage(desc);
+          }
+          function pool() {
+             var desc = "4. You enter a room with a crystal clear pool.  In the corner is a women crying.";
+             scoreEval();
+             desc = desc + "\n" + "Score: " + score ;
+             displayMessage(desc);
+          }
+          function dirtRoom() {
+             var desc = "5. You enter a room with a dirt floor and a table.  On the table is an odd key.";
+             scoreEval();
+             desc = desc + "\n" + "Score: " + score ;
+             displayMessage(desc);
+          }
+          function dante() {
+             var desc = "6. You enter a cave with water dripping from the ceiling.  Welcome to Dante's Cave!";
              scoreEval();
              desc = desc + "\n" + "Score: " + score ;
              displayMessage(desc);
