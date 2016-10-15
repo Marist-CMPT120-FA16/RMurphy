@@ -50,10 +50,19 @@
                  command = command.trim();
                  command = command.toLowerCase();
                  command = command.substr(0,2);
-                 checkInput();
+                    if (command == "no")  {
+                      btnGo_North_click();
+                } if (command == "so") {
+                    btnGo_South_click();
+                  } if (command == "we") {
+                     btnGo_West_click();
+                 }  if (command == "ea") {
+                   btnGo_East_click();
+               } 
+                /* checkInput(); */
                  displayMessage(command);
           }
-            function checkInput() {
+           /* function checkInput() {
               if (command == "no")  {
                  btnGo_North_click();
                 } else if (command == "so") {
@@ -63,9 +72,8 @@
                  } else if (command == "ea") {
                    btn_Go_East_click();
                } 
-             }     
-
-         //
+             }     */ 
+          //
          // Functions for direction buttons to handle the click action by user
          // ie: First Action pressing North will bring the user/ player to location 1 from 0
          // when loc is at 4, player moved to location 2.  Error message is put in text box if no valid location is picked for that button
