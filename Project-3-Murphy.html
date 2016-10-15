@@ -50,17 +50,19 @@
              var command = document.getElementById("txtCommand").value;
                  command = command.trim();
                  command = command.toLowerCase();
-                 command = command.substr(0,2);
-                    if (command == "no")  {
+                 command = command.substr(0,3);
+                    if (command == "nor")  {
                       btnGo_North_click();
-                  }   if (command == "so") {
+                  }   if (command == "sou") {
                          btnGo_South_click();
-                    }   if (command == "we") {
+                    }   if (command == "wes") {
                           btnGo_West_click();
-                      }  if (command == "ea") {
+                      }  if (command == "eas") {
                            btnGo_East_click();
-                       } 
-                 /*  Use fr testing to ensure txt is processed correctly
+                       } else displayMessage("Please try again." +"\n" + "Valid directions are: North, South, East, West." 
+                            + "\n" + " or press a directional buttons below")
+                    
+                 /*  Use for testing to ensure txt is processed correctly
                      displayMessage(command);   */
             }
 
