@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
      <!--
 	    Ruth Murphy
-	    October 12, 2016
-	    Project 3 - Continue improving game.
+	    October 15, 2016
+	    Project 3 
+              - Continue improving game by adding text box and additional locations.
       -->
 
       <!-- Browser Tab Title -->
       <title> Murphy's World </title>
 
-      <!-- set up standard styles for ourput.  Makes it easier to change styles for output to user -->
+      <!-- set up standard styles for output.  
+              Makes it easier to change styles for output to user -->
+
          <style  type ="text/css">
                h1      { font-size: 30pt; color: red;}
                h3      { color: blue; font-size: 12pt;}
@@ -47,12 +50,17 @@
          
          //
          // Command Button handler for input by user.
-         // trim off extra spaces, make sure all charaters are lower case, starting at 0 on the line, grab 1 charater
-         // Then trigger the button function that handles the movement to the locations (reuse functions)
-         // NOTE: 
-         // user input validation could be better, more letters would need to be used to ensure person
-         // is not entering another word.  Customer indicated a need for only N, S, E, W, n, s, e, w at this time.
-         //  so script is built to customer request.
+         //=======================================================================
+         // 1) trim off extra spaces
+         // 2) make sure all charaters are lower case
+         // 3) Evaluate if north, south, east or west was entered or something else
+         // 4) if direction was typed in, starting at position 0 on the line, grab first character
+         // 5) Then trigger the button function that handles the movement to the locations (reuse functions)
+         // NOTE: Script will take user input and validate it is a direction.
+         // I have scripted this to allow for entry of more than just a sinlge letter  (N, W, E, S, n, e ,w, s).
+         // it will only validate to these single letter directions.
+         // Customer indicated a need for only N, S, E, W, n, s, e, w at this time
+         //  Flexability was added for the user though.
          //
          function buttonGo() {
              var command = document.getElementById("txtCommand").value;
@@ -63,25 +71,28 @@
                  }
                     if (command == "n")  {
                       btnGo_North_click();
-                  }   if (command == "s") {
+                  }  else if (command == "s") {
                          btnGo_South_click();
-                    }   if (command == "w") {
+                    }  else if (command == "w") {
                           btnGo_West_click();
-                      }  if (command == "e") {
+                      }  else if (command == "e") {
                            btnGo_East_click();
-                       } else displayMessage("Please try again." +"\n" + "Valid directions are: N, S, E, W." 
+                       } else displayMessage("Please try again." +"\n" + "Valid entries are: N, S, E, W, n, s, e, w." 
                             + "\n" + " or press a directional buttons below")
                    
-                 /*  Use for testing to ensure txt is processed correctly
+                 /*  Use for testing to ensure txt is processed correctly uncomment next line for to testing
                      displayMessage(command);   */
             }
 
          //
          // Functions for direction buttons to handle the click action by user
+         //================================================================================
          // ie: First Action pressing North will bring the user/ player to location 1 from 0
-         // when loc is at 4, player moved to location 2.  Error message is put in text box if no valid location is picked for that button
+         // when location is at 4, player moved to location 2.  
+         // Error message is put in text box if no valid location is picked for that button
          //  
-         // 10-14-16  - to hit all 6 locations from 0 => solution is N,W,S,W,N,N == 0,1,3,5,4,2,6)
+         // 10-14-16  - to hit all 6 locations from 0; solution is N,W,S,W,N,N == 0,1,3,5,4,2,6)
+         // bonus point if they return right back to where they started.
          //       
          function btnGo_North_click() {
             if (currentLoc === 0) {
@@ -181,6 +192,8 @@
 
        // 
        // Set up of locations that will be displayed for the user.
+       //=========================================================
+       // function look is the coordinator of when a location function will be called.
        // Used with button function and message functions to display the correct location to the user.
        //
          function look() {
@@ -203,6 +216,12 @@
                default: desc = " You can not go that way";
             }
          }
+
+          //
+          // Individual functions for the locations
+          //===============================================
+          // allows the description to be displayed to the user as well as a display of current score.
+          //
 
           function frontDr() {
              var desc = "Location 0. You are in front of a yellow building";
@@ -248,20 +267,13 @@
              displayMessage(desc);
           }
 
-           //
-           // Function to print the location and the score to screen for the user.
-           //
-           // Comment out scoreEval since it is part of new location functions
-           //    scoreEval();
-           //    desc = desc + "\n" +"Your Score is: " + score;
-           //    displayMessage(desc);
-           //   }
-
           //
           // Function to check an error in direction.  Ie: a wall has been reached
-          // The first time a user goes to a location that is not configured for the button, they get 
-          // the message that they should try another direction.  After multiple times (variable limit) with no valid
+          // ========================================================================
+          // The first time a user goes to a location that is not valid (location "a" to "b" not included), they get 
+          // the message that they should try another direction.  After multiple times (variable "limit") with no valid
           // direction, a new message is shown to rethink what they are doing.
+          // reset function
           //
            function directionError() {
             directionErrorCount = directionErrorCount + 1;
@@ -274,15 +286,15 @@
 
             //
             // Function to check the score to decide if 5 needs to be added.
+            // =============================================================
             // Do the calculation and update the score variable if needed.
             // It checks to see if the user has been to the location already.  
             // if so, then they do not get more points.
-            // Total possible score = 30 {7*5} - If you start at 0 and then make your way back to 0 
+            // Total possible score = 35 {7*5} - If you start at 0 and then make your way back to 0 
             // 10-14-16 - Solution - N,W,S,E,N,N == 0,1,3,5,4,2,6
             //                to hit all 6 locations from 0
             //
               function scoreEval() {
-               /* if ((! beenHere0)  && (currentLoc === 0)) { */
                   if (! beenHere0) {
                       if (currentLoc === 0) {
                         score = score + 5;
@@ -313,7 +325,8 @@
                       beenHere6 = true;
               }
             }
-          }     
+          } 
+    
          //
          // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
@@ -325,7 +338,7 @@
       </script> 
     
       <!-- Set text area box size, background, text formatting and a starting location for the user -->
-     <!--<body onload = "init();">  -->
+    <!-- <body onload = "init();">  -->
        <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
                rows="8"
                cols="55"
@@ -333,8 +346,11 @@
                name="taMain">You have entered a yellow house.  Pick a direction.
       </textarea>
             
+      <!-- Create a box for user input, a description for it, 
+            and a button to indicate they are done with entry -->
+
        <br>
-       Command:       
+       Enter Direction:       
        <input type="text" 
               id = "txtCommand"
               name="txtCommand">
