@@ -49,9 +49,22 @@
              var command = document.getElementById("txtCommand").value;
                  command = command.trim();
                  command = command.toLowerCase();
-                 command = command substr(0,2);
+                 command = command.substr(0,2);
+                 checkInput();
                  displayMessage(command);
           }
+            function checkInput() {
+              if (command == "no")  {
+                 btnGo_North_click();
+                } else if (command == "so") {
+                    btn_Go_South_click();
+                  } else if (command == "we") {
+                     btn_Go_West_click();
+                 } else if (command == "ea") {
+                   btn_Go_East_click();
+               } 
+             }     
+
          //
          // Functions for direction buttons to handle the click action by user
          // ie: First Action pressing North will bring the user/ player to location 1 from 0
@@ -273,9 +286,11 @@
             //                to hit all 6 locations from 0
             //
               function scoreEval() {
-               if ((! beenHere0)  && (currentLoc === 0)) {
-                    score = score + 5;
-                    beenHere0 = true;           
+             <!--  if ((! beenHere0)  && (currentLoc === 0)) { -->
+                   if (! beenHere0) {
+                      if (currentLoc === 0) {
+                        score = score + 5;
+                        beenHere0 = true;           
               } 
                  else if ((! beenHere1) && (currentLoc === 1 )) {
                       score = score + 5;
