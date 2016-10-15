@@ -11,9 +11,13 @@
       <!-- Browser Tab Title -->
       <title> Murphy's World </title>
 
-      <!-- set up style for the page title and link to email me for errors -->
-	 <p style = "font-size: 30pt; color: red;"> Welcome to Murphy's World! </p>
-	  <p style = "color: blue;">
+      <!-- set up standard styles for ourput.  Makes it easier to change styles for output to user -->
+         <style  type ="text/css">
+               h1      { font-size: 30pt; color: red;}
+               h3      { color: blue; font-size: 12pt;}
+         </style>      
+
+          <h1> Welcome to Murphy's World! </h1>
 	    <h3> <a href= mailto:ruth.murphy1@marist.edu> Problem? Click here to send errors to Ruth Murphy</a></h3>
 
       <!-- Start the programming for the game -->
@@ -44,7 +48,7 @@
          //
          // Command Button handler for input by user.
          // trim off extra spaces, make sure all charaters are lower case, starting at 0 on the line, grab 1 charater
-         // Then trigger the button functions that handle the movement to the locations (reuse functions)
+         // Then trigger the button function that handles the movement to the locations (reuse functions)
          // NOTE: 
          // user input validation could be better, more letters would need to be used to ensure person
          // is not entering another word.  Customer indicated a need for only N, S, E, W, n, s, e, w at this time.
@@ -54,7 +58,9 @@
              var command = document.getElementById("txtCommand").value;
                  command = command.trim();
                  command = command.toLowerCase();
+               if (command == "north" || command == "west" || command == "south" || command == "east") {
                  command = command.substr(0,1);
+                 }
                     if (command == "n")  {
                       btnGo_North_click();
                   }   if (command == "s") {
@@ -65,7 +71,7 @@
                            btnGo_East_click();
                        } else displayMessage("Please try again." +"\n" + "Valid directions are: N, S, E, W." 
                             + "\n" + " or press a directional buttons below")
-                    
+                   
                  /*  Use for testing to ensure txt is processed correctly
                      displayMessage(command);   */
             }
