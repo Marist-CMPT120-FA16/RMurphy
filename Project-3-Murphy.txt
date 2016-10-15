@@ -315,13 +315,24 @@
       </script> 
     
       <!-- Set text area box size, background, text formatting and a starting location for the user -->
-      <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
+      <body onload="init();">
+       <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
                rows="8"
                cols="55"
                id="taMain"
                name="taMain"> You have just entered a yellow house. Press any button.
       </textarea>
-     
+            
+       <br>
+       Command:       
+       <input type="text" 
+              id = "txtCommand"
+              name="txtCommand">
+
+       <input type="button"
+              value="Go" 
+              onclick="buttonGo();" /> 
+
       <!-- Create buttons for the user to press -->  
        <br>
        <input type="button" 
