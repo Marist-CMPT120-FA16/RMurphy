@@ -45,21 +45,25 @@
          // Command Button handler for input by user.
          // trim off extra spaces, make sure all charaters are lower case, starting at 0 on the line, grab 1 charater
          // Then trigger the button functions that handle the movement to the locations (reuse functions)
+         // NOTE: 
+         // user input validation could be better, more letters would need to be used to ensure person
+         // is not entering another word.  Customer indicated a need for only N, S, E, W, n, s, e, w at this time.
+         //  so script is built to customer request.
          //
          function buttonGo() {
              var command = document.getElementById("txtCommand").value;
                  command = command.trim();
                  command = command.toLowerCase();
-                 command = command.substr(0,3);
-                    if (command == "nor")  {
+                 command = command.substr(0,1);
+                    if (command == "n")  {
                       btnGo_North_click();
-                  }   if (command == "sou") {
+                  }   if (command == "s") {
                          btnGo_South_click();
-                    }   if (command == "wes") {
+                    }   if (command == "w") {
                           btnGo_West_click();
-                      }  if (command == "eas") {
+                      }  if (command == "e") {
                            btnGo_East_click();
-                       } else displayMessage("Please try again." +"\n" + "Valid directions are: North, South, East, West." 
+                       } else displayMessage("Please try again." +"\n" + "Valid directions are: N, S, E, W." 
                             + "\n" + " or press a directional buttons below")
                     
                  /*  Use for testing to ensure txt is processed correctly
@@ -195,64 +199,49 @@
          }
 
           function frontDr() {
-             var desc = "0. You are in front of a yellow building";
+             var desc = "Location 0. You are in front of a yellow building";
              scoreEval();
              desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 
          function kitchen() {
-             var desc = "1. You walk through the door and see a kitchen";
+             var desc = "Location 1. You walk through the door and see a kitchen";
              scoreEval();
              desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function tunnel() {
-             var desc = "2. You have entered a very long tunnel";
+             var desc = "Location 2. You have entered a very long tunnel";
              scoreEval();
              desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function roomDoor() {
-             var desc = "3. You enter a room with a door.";
+             var desc = "Location 3. You enter a room with a door.";
              scoreEval();
              desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function pool() {
-             var desc = "4. You enter a room with a crystal clear pool.  In the corner is a women crying.";
+             var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
              scoreEval();
              desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dirtRoom() {
-             var desc = "5. You enter a room with a dirt floor and a table.  On the table is an odd key.";
+             var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
              scoreEval();
              desc = desc + "\n" + "Your Score is : " + score ;
              displayMessage(desc);
           }
           function dante() {
-             var desc = "6. You enter a cave with water dripping from the ceiling.  Welcome to Dante's Cave!";
+             var desc = "Location 6. You enter a cave with water dripping from the ceiling." + "\n" +  "Welcome to Dante's Cave!";
              scoreEval();
              desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 
-
-       /* Comment out the Project 2 case statements so I can create functions for the locations
-       
-               case 0: desc = "0. You walk through the door and see a kitchen";
-                       break;
-               case 1: desc = "1. You have entered a very long tunnel";
-                       break; 
-               case 2: desc = "2. You enter a room with a door.";
-                       break;
-               case 3: desc = "3. You are in a room with a dirt floor and a table.  On the table is an odd key.";
-                       break;
-               case 4: desc = "4. Welcome to Dante's Cave!";  
-                       break;
-               default: desc = "default. You have entered a yellow house";
-               */
            //
            // Function to print the location and the score to screen for the user.
            //
@@ -335,7 +324,7 @@
                rows="8"
                cols="55"
                id="taMain"
-               name="taMain"> You have just entered a yellow house. Press any button.
+               name="taMain">You have entered a yellow house.  Pick a direction.
       </textarea>
             
        <br>
