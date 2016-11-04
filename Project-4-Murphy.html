@@ -1,6 +1,31 @@
-// Project 4 November 1, 2016
-// Ruth Murphy CMPT 120
-// Location.js file to accompany Game called "Murphy's World"
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+     <!--
+	    Ruth Murphy
+	    October 27, 2016
+	    Project 4 
+              - Continue improving game by adding functions to another file for HMTL / Javascript separation.
+			  - Add additional locations, help and inventory, disable invalid direction buttons
+      -->
+
+      <!-- Browser Tab Title -->
+      <title> Murphy's World </title>
+
+      <!-- set up standard styles for output.  
+              Makes it easier to change styles for output to user -->
+
+         <style  type ="text/css">
+               h1      { font-size: 30pt; color: red;}
+               h3      { color: blue; font-size: 12pt;}
+         </style>      
+
+          <h1> Welcome to Murphy's World! </h1>
+	    <h3> <a href= mailto:ruth.murphy1@marist.edu> Problem? Click here to send errors to Ruth Murphy</a></h3>
+
+      <!-- Start the programming for the game -->
+        <script type="text/javascript">
 
          //
          // List of Variables for Game
@@ -14,7 +39,7 @@
          var beenHere2 = false;
          var beenHere3 = false;
          var beenHere4 = false;
-     	 var beenHere5 = false;
+	 var beenHere5 = false;
          var beenHere6 = false;
                   
          //
@@ -192,54 +217,59 @@
                default: desc = " You can not go that way";
             }
          }
-     */
+
           //
           // Individual functions for the locations
           //===============================================
           // allows the description to be displayed to the user as well as a display of current score.
           //
 
+		  function mdesc() {
+		      var desc = "";
+			  desc + "\n" + "Your Score is: " + score ;
+		 }
+		  
           function frontDr() {
              var desc = "Location 0. You are in front of a yellow building";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             mdesc() ;
              displayMessage(desc);
           }
 
          function kitchen() {
              var desc = "Location 1. You walk through the door and see a kitchen";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             mdesc();
              displayMessage(desc);
           }
           function tunnel() {
              var desc = "Location 2. You have entered a very long tunnel";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             mdesc();
              displayMessage(desc);
           }
           function roomDoor() {
              var desc = "Location 3. You enter a room with a door.";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             mdesc();
              displayMessage(desc);
           }
           function pool() {
              var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             mdesc();
              displayMessage(desc);
           }
           function dirtRoom() {
              var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
              scoreEval();
-             desc = desc + "\n" + "Your Score is : " + score ;
+             mdesc();
              displayMessage(desc);
           }
           function dante() {
              var desc = "Location 6. You enter a cave with water dripping from the ceiling." + "\n" +  "Welcome to Dante's Cave!";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             mdesc();
              displayMessage(desc);
           }
 
