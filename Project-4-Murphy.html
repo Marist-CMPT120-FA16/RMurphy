@@ -224,52 +224,47 @@
           // allows the description to be displayed to the user as well as a display of current score.
           //
 
-		  function mdesc() {
-		      var desc = "";
-			  desc + "\n" + "Your Score is: " + score ;
-		 }
-		  
           function frontDr() {
              var desc = "Location 0. You are in front of a yellow building";
              scoreEval();
-             mdesc() ;
+			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 
          function kitchen() {
              var desc = "Location 1. You walk through the door and see a kitchen";
              scoreEval();
-             mdesc();
+             desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function tunnel() {
              var desc = "Location 2. You have entered a very long tunnel";
              scoreEval();
-             mdesc();
+             desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function roomDoor() {
              var desc = "Location 3. You enter a room with a door.";
              scoreEval();
-             mdesc();
+			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function pool() {
              var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
              scoreEval();
-             mdesc();
+			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dirtRoom() {
              var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
              scoreEval();
-             mdesc();
+			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dante() {
              var desc = "Location 6. You enter a cave with water dripping from the ceiling." + "\n" +  "Welcome to Dante's Cave!";
              scoreEval();
-             mdesc();
+			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 
@@ -304,35 +299,38 @@
                   if (! beenHere0) {
                       if (currentLoc === 0) {
                         score = score + 5;
-                        beenHere0 = true;           
+                        beenHere0 = true; 					
               } 
                  else if ((! beenHere1) && (currentLoc === 1 )) {
                       score = score + 5;
                       beenHere1 = true;
-              }
+			  }
                  else if ((! beenHere2) && (currentLoc === 2)) {
                       score = score + 5;
                       beenHere2 = true;
-             }
+			  }
                  else if ((! beenHere3) && (currentLoc === 3)) {
                       score = score + 5;
-                      beenHere3 = true;
+                      beenHere3 = true;			
              }
                  else if ((! beenHere4) && (currentLoc === 4)) {
                       score = score + 5;
-                      beenHere4 = true;
+                      beenHere4 = true;			
              }
                  else if ((! beenHere5) && (currentLoc === 5 )) {
                       score = score + 5;
-                      beenHere5 = true;
+                      beenHere5 = true;			
              }
                  else if ((! beenHere6) && (currentLoc === 6)) {
                       score = score + 5;
-                      beenHere6 = true;
+                      beenHere6 = true;			
               }
             }
           } 
-    
+              function mdesc() {
+		      var desc = "";
+			  desc = desc + "\n" + "Your Score is: " + score ;
+			  }
          //
          // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
