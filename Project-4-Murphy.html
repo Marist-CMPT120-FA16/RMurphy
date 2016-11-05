@@ -191,6 +191,23 @@
             }
          }
 
+		 //
+		 // Set up Help and inventory Button actions
+		 //=========================================
+		 // functions to execute when the help and inventory buttons are pressed
+		 //
+		 
+		 function btnHelp() {
+		 updateDisplay("Valid moves are: N, S, E, W, n, s, e, w." + 
+		                "\n" + " or press a directional buttons below"
+						+ "\n\n" + "You can issue the command 'take' to gather items"
+						+ "\n\n" + "You can press the 'Inventory' button to review what you have gathered");
+		 }
+		 function btnInv ()  {
+		 
+		 }
+		 
+		 
        // 
        // Set up of locations that will be displayed for the user.
        //=========================================================
@@ -360,7 +377,9 @@
               value="Go" 
               onclick="buttonGo();" /> 
 
-      <!-- Create buttons for the user to press -->  
+      <!-- Create buttons for the user to press 
+	        Direction Buttons, Help , Inventory
+	  -->  
        <br>
        <input type="button" 
               value="Go North"
@@ -374,5 +393,12 @@
        <input type="button" 
               value="Go West"
               onclick="btnGo_West_click();">
+	   <input type="button" 
+              value="Help"
+              onclick="btnHelp();">
+	   <input type="button" 
+              value="Inventory"
+              onclick="btnInv();">
+			  
   </body>
 </html>
