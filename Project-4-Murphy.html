@@ -198,13 +198,14 @@
 		 //
 		 
 		 function btnHelp() {
-		 updateDisplay("Valid moves are: N, S, E, W, n, s, e, w." + 
+		 displayMessage("Valid moves are: N, S, E, W, n, s, e, w." + 
 		                "\n" + " or press a directional buttons below"
 						+ "\n\n" + "You can issue the command 'take' to gather items"
 						+ "\n\n" + "You can press the 'Inventory' button to review what you have gathered");
 		 }
 		 function btnInv ()  {
-		 
+		 var msg = "Inventory:" + inventory;
+		 displayMessage(msg);
 		 }
 		 
 		 
