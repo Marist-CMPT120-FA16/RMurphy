@@ -353,9 +353,21 @@
                  else if ((! beenHere6) && (currentLoc === 6)) {
                       score = score + 5;
                       beenHere6 = true;			
-              }
-            }
-          } 
+             }   else if ((! beenHere7) && (currentLoc === 7)) {
+			          score = score + 5;
+					  beenhere7 = true;
+	         }   else if ((! beenHere8) && (currentLoc === 8)) {
+			          score = score + 5;
+					  beenhere8 = true;
+             }   else if ((! beenHere9) && (currentLoc === 9)) {
+			          score = score + 5;
+					  beenhere9 = true;
+             }   else if ((! beenHere10) && (currentLoc === 10)) {
+			          score = score + 5;
+					  beenhere10 = true;
+			  }
+			 }
+			}
               
          //
          // Function for displying the message correctly (location and score) as we iterate through the game
@@ -413,6 +425,6 @@
               onclick="btnInv();">
 			  
 		<p><strong> Map</strong></p>
-		<img src="map.gif" width="618" height="551" alt="Game Map"/>
+		<img src="map.gif" width="718" height="551" alt="Game Map"/>
   </body>
 </html>
