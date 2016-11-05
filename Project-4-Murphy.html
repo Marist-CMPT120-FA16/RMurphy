@@ -28,7 +28,7 @@
         <script type="text/javascript">
 
          //
-         // List of Variables for Game
+         // List of Global Variables for Game
          //         
          var currentLoc = 0;
          var score = 0;
@@ -39,8 +39,13 @@
          var beenHere2 = false;
          var beenHere3 = false;
          var beenHere4 = false;
-	 var beenHere5 = false;
+	     var beenHere5 = false;
          var beenHere6 = false;
+		 var beenHere7 = false;
+		 var beenHere8 = false;
+         var beenHere9 = false;
+		 var beenHere10 = false;
+		 
                   
          //
          // Initialization function for executing Look Function to check where user is
@@ -67,8 +72,9 @@
              var command = document.getElementById("txtCommand").value;
                  command = command.trim();
                  command = command.toLowerCase();
-               if (command == "north" || command == "west" || command == "south" || command == "east") {
-                 command = command.substr(0,1);
+               if (command == "north" || command == "west" || command == "south" || command == "east" 
+			        || command == "help" || command == "invent") {
+                       command = command.substr(0,1);
                  }
                     if (command == "n")  {
                       btnGo_North_click();
@@ -77,9 +83,13 @@
                     }  else if (command == "w") {
                           btnGo_West_click();
                       }  else if (command == "e") {
-                           btnGo_East_click();
-                       } else displayMessage("Please try again." +"\n" + "Valid entries are: N, S, E, W, n, s, e, w." 
-                            + "\n" + " or press a directional buttons below")
+                            btnGo_East_click();
+						}   else if (command == "h") {
+						      btnHelp();
+						 }   else if (command == "i") {
+						       btnInv();
+					       }    else displayMessage("Please try again." +"\n" + "Type 'help' for valid commands." 
+                                     + "\n" + " or press a button below")
                    
                  /*  Use for testing to ensure txt is processed correctly uncomment next line for to testing
                      displayMessage(command);   */
@@ -200,13 +210,14 @@
 		 function btnHelp() {
 		 displayMessage("Valid moves are: N, S, E, W, n, s, e, w." + 
 		                "\n" + " or press a directional buttons below"
-						+ "\n\n" + "You can issue the command 'take' to gather items"
-						+ "\n\n" + "You can press the 'Inventory' button to review what you have gathered");
+						+ "\n\n" + "Valid commands are 'Take','Inventory' or 'Help'."
+						+ "\n\n" + "Press the 'Inventory' button to see the contents of your bag."
+						+ "\n" + "Press the 'Help' button to see this message.");
 		 }
-		 function btnInv ()  {
-		 var msg = "Inventory:" + inventory;
-		 displayMessage(msg);
-		 }
+		 //function btnInv()  {
+		 //var msg = "Inventory:" + inventory;
+		 //displayMessage(msg);
+		 //}
 		 
 		 
        // 
@@ -359,8 +370,8 @@
       <!-- Set text area box size, background, text formatting and a starting location for the user -->
     <!-- <body onload = "init();">  -->
        <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
-               rows="8"
-               cols="55"
+               rows="10"
+               cols="70"
                id="taMain"
                name="taMain">You have entered a yellow house.  Pick a direction.
       </textarea>
@@ -401,5 +412,7 @@
               value="Inventory"
               onclick="btnInv();">
 			  
+		<p><strong> Map</strong></p>
+		<img src="map.gif" width="618" height="551" alt="Game Map"/>
   </body>
 </html>
