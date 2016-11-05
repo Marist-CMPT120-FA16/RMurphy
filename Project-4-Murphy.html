@@ -243,6 +243,14 @@
                     break;
                case 6: dante();
                     break;
+			   case 7: greenRoom();
+				    break;
+			   case 8: pentagramRm();
+			        break;
+               case 9: dampRoom();
+			        break;
+               case 10: deadEnd();
+                    break;			   
                default: desc = " You can not go that way";
             }
          }
@@ -296,6 +304,31 @@
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
+		  function greenRoom() {
+             var desc = "Location 7. You enter a green room" + "\n" +" You hear a far off sound." + " It sounds like crying.";
+             scoreEval();
+			 desc = desc + "\n" + "Your Score is: " + score ;
+             displayMessage(desc);
+          }
+		  function pentagramRm() {
+             var desc = "Location 8. You enter a room with a pentagram on the floor." + "\n" + "You hear an erie chanting";
+             scoreEval();
+			 desc = desc + "\n" + "Your Score is: " + score ;
+             displayMessage(desc);
+          }
+		  function dampRoom() {
+             var desc = "Location 9. You enter a cold , damp room." + "\n" + "You smell Peanut Butter" 
+			         + "On a shelf in the room you find a sandwich.";
+             scoreEval();
+			 desc = desc + "\n" + "Your Score is: " + sc
+             displayMessage(desc);
+          }
+		  function deadEnd() {
+             var desc = "Location 10. You enter a cave that seems to have no exits";
+             scoreEval();
+			 desc = desc + "\n" + "Your Score is: " + score ;
+             displayMessage(desc);
+          }
 
           //
           // Function to check an error in direction.  Ie: a wall has been reached
@@ -334,15 +367,15 @@
                       score = score + 5;
                       beenHere1 = true;
 			  }
-                 else if ((! beenHere2) && (currentLoc === 2)) {
+                 else if ((! beenHere2) && (currentLoc === 2 )) {
                       score = score + 5;
                       beenHere2 = true;
 			  }
-                 else if ((! beenHere3) && (currentLoc === 3)) {
+                 else if ((! beenHere3) && (currentLoc === 3 )) {
                       score = score + 5;
                       beenHere3 = true;			
              }
-                 else if ((! beenHere4) && (currentLoc === 4)) {
+                 else if ((! beenHere4) && (currentLoc === 4 )) {
                       score = score + 5;
                       beenHere4 = true;			
              }
@@ -350,19 +383,19 @@
                       score = score + 5;
                       beenHere5 = true;			
              }
-                 else if ((! beenHere6) && (currentLoc === 6)) {
+                 else if ((! beenHere6) && (currentLoc === 6 )) {
                       score = score + 5;
                       beenHere6 = true;			
-             }   else if ((! beenHere7) && (currentLoc === 7)) {
+             }   else if ((! beenHere7) && (currentLoc === 7 )) {
 			          score = score + 5;
 					  beenhere7 = true;
-	         }   else if ((! beenHere8) && (currentLoc === 8)) {
+	         }   else if ((! beenHere8) && (currentLoc === 8 )) {
 			          score = score + 5;
 					  beenhere8 = true;
-             }   else if ((! beenHere9) && (currentLoc === 9)) {
+             }   else if ((! beenHere9) && (currentLoc === 9 )) {
 			          score = score + 5;
 					  beenhere9 = true;
-             }   else if ((! beenHere10) && (currentLoc === 10)) {
+             }   else if ((! beenHere10) && (currentLoc === 10 )) {
 			          score = score + 5;
 					  beenhere10 = true;
 			  }
