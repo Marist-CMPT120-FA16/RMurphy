@@ -120,7 +120,15 @@
                  } else {
                    if (currentLoc === 2){
                     currentLoc = 6;
-                    look();         
+                    look();
+                  } else {
+                   if (currentLoc === 8){
+                    currentLoc = 5;
+                    look();					
+                   } else {
+                   if (currentLoc === 9){
+                    currentLoc = 4;
+                    look();					
                   } else {
                     directionError(); 
                 }
@@ -145,6 +153,14 @@
                 if (currentLoc === 6) {
                  currentLoc = 2;
                  look();
+				 } else {
+                  if (currentLoc === 4) {
+                   currentLoc = 9;
+                   look();
+				  } else {
+                   if (currentLoc === 5) {
+                 currentLoc = 8;
+                 look();				 
                    } else {
                  directionError();               
                 }
@@ -169,7 +185,11 @@
                     if (currentLoc === 1) {
                        currentLoc = 5;
                        look();
-                     } else {
+				   } else {
+                      if (currentLoc === 5) {
+                       currentLoc = 7;
+                       look();
+					} else {
                       directionError(); 
                }
               }
@@ -193,6 +213,14 @@
                     if (currentLoc === 5) {
                        currentLoc = 1;
                        look();
+				   } else {
+                     if (currentLoc === 2) {
+                       currentLoc = 10;
+                       look();
+					 } else {
+                       if (currentLoc === 7) {
+                        currentLoc = 4;
+                        look();
                    } else {
                      directionError(); 
                }
