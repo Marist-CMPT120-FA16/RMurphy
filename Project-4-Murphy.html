@@ -131,7 +131,9 @@
                     look();					
                   } else {
                     directionError(); 
-                }
+                  }
+				 }
+				}
                }
               }
              }            
@@ -163,7 +165,9 @@
                  look();				 
                    } else {
                  directionError();               
-                }
+                  }
+				 }
+				}
                } 
               }
              }
@@ -190,9 +194,20 @@
                        currentLoc = 7;
                        look();
 					} else {
+                      if (currentLoc === 10) {
+                       currentLoc = 2;
+                       look();
+					 } else {
+                      if (currentLoc === 4) {
+                       currentLoc = 7;
+                       look();
+					} else {
                       directionError(); 
+                  }
+				 }
+			    }
                }
-              }
+			  }
              }
             }
          }
@@ -223,7 +238,9 @@
                         look();
                    } else {
                      directionError(); 
-               }
+                 }
+			    }
+			   }
               }
              }              
             }
