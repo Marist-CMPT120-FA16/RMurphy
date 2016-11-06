@@ -7,6 +7,7 @@
     //         
          var currentLoc = 0;
          var score = 0;
+		 var taken = false;
          var directionErrorCount = 0;
          var limit = 5;
          var beenHere0 = false;
@@ -20,10 +21,13 @@
 		 var beenHere8 = false;
          var beenHere9 = false;
 		 var beenHere10 = false;
-		 
+		 var keyTaken = false;
+		 var womenTaken = false;
+		 var peanutTaken = false;
+		 	 
                   
          //
-         // Initialization function for executing Look Function to check where user is
+         // Initialization function for executing whne page (re)loads
          //
          function init() {
 		     desc = "You are standing in front of a yellow house";
@@ -34,7 +38,22 @@
 			 document.getElementById("btnGo_N").disabled = false;
          }
          
-         //
+         
+		 // prepare for list of items that can be "taken"
+		 var goodies = new Array();
+		 goodies[0] = goodiesKey;
+		 goodies[1] = goodiesWoman;
+		 goodies[2] = goodiesPeanut;
+		 
+		 // Prepare a place to store the inventory for recall later
+		 var inventory = new Array();
+		 		 
+		 //
+		 // what to do when user clicks inventory button
+		 // This will pront out the current array that has the inventory
+		 //
+		 		 
+		 //
          // Command Button handler for input by user.
          //=======================================================================
          // 1) trim off extra spaces
@@ -239,10 +258,10 @@
 						+ "\n\n" + "Press the 'Inventory' button to see the contents of your bag."
 						+ "\n" + "Press the 'Help' button to see this message.");
 		 }
-		 //function btnInv()  {
-		 //var msg = "Inventory:" + inventory;
-		 //displayMessage(msg);
-		 //}
+		 function btnInv()  {
+		 var msg = "Inventory:" + inventory;
+		 displayMessage(msg);
+		 }
 		 
 		 
        // 
@@ -366,13 +385,15 @@
           }
           function pool() {
              var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
-             scoreEval();
+             var womanTaken = false;
+			 scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dirtRoom() {
              var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
-             scoreEval();
+             var keyTaken = false;
+			 scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
@@ -397,7 +418,8 @@
 		  function dampRoom() {
              var desc = "Location 9. You enter a cold, damp room.  You smell Peanut Butter." 
 			         + "\n" + "On a shelf in the room you find a sandwich.";
-             scoreEval();
+             var peanutTaken = false;
+			 scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
@@ -483,7 +505,30 @@
 			  }
 			 }
 			}
-              
+
+			
+		/*	 function takeEval() {
+              if ((beenHere4) && (womenTaken = false )) {
+                      // figure out how to identify taken
+					  //womenTaken = true;
+					  goodiesWoman = true;
+			  }
+                 else if ((beenHere5) && (keyTaken = false )) {
+                      // figure out how to identify taken
+                      //keyTaken = true;
+					  goodiesKey = true;
+			  }
+                 else if ((beenHere9) && (peanutTaken = false )) {
+                      // figure out how to identify taken
+                      //peanutTaken = true;	
+                      goodiesPeanut = true;					  
+             }
+                 
+			}
+
+       */
+
+			
          //
          // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
