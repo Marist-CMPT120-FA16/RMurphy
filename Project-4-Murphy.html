@@ -51,7 +51,12 @@
          // Initialization function for executing Look Function to check where user is
          //
          function init() {
-            look();
+		     desc = "You are standing in front of a yellow house";
+             displayMessage(desc);
+			 document.getElementById("btnGo_S").disabled = true;
+			 document.getElementById("btnGo_W").disabled = true;
+			 document.getElementById("btnGo_E").disabled = true;
+			 document.getElementById("btnGo_N").disabled = false;
          }
          
          //
@@ -360,14 +365,10 @@
           //
 
           function frontDr() {
-             var desc = "Location 0. You are in front of a yellow building";
+             var desc = "Location 0. You are standing in front of a yellow house";
              scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
-			 //document.getElementById("btnGo_S").disabled = true;
-			 //document.getElementById("btnGo_W").disabled = true;
-			 //document.getElementById("btnGo_E").disabled = true;
-			 //document.getElementById("btnGo_N").disabled = false;
           }
 
          function kitchen() {
@@ -486,20 +487,24 @@
                       beenHere5 = true;			
              }
                  else if ((! beenHere6) && (currentLoc === 6 )) {
-                      score = score + 5;
-                      beenHere6 = true;			
-             }   else if ((! beenHere7) && (currentLoc === 7 )) {
+                      score = score + 5;					  
+                      beenHere6 = true;						  
+             }   
+			     else if ((! beenHere7) && (currentLoc === 7 )) {
 			          score = score + 5;
-					  beenhere7 = true;
-	         }   else if ((! beenHere8) && (currentLoc === 8 )) {
+					  beenHere7 = true;
+	         }   
+			     else if ((! beenHere8) && (currentLoc === 8 )) {
 			          score = score + 5;
-					  beenhere8 = true;
-             }   else if ((! beenHere9) && (currentLoc === 9 )) {
+					  beenHere8 = true;
+             }   
+			    else if ((! beenHere9) && (currentLoc === 9 )) {
 			          score = score + 5;
-					  beenhere9 = true;
-             }   else if ((! beenHere10) && (currentLoc === 10 )) {
+					  beenHere9 = true;
+             }   
+			    else if ((! beenHere10) && (currentLoc === 10 )) {
 			          score = score + 5;
-					  beenhere10 = true;
+					  beenHere10 = true;
 			  }
 			 }
 			}
@@ -515,12 +520,12 @@
       </script> 
     
       <!-- Set text area box size, background, text formatting and a starting location for the user -->
-    <!-- <body onload = "init();">  -->
+    <body onload="init();">
        <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
                rows="10"
                cols="70"
                id="taMain"
-               name="taMain">You have entered a yellow house.  Pick a direction.
+               name="taMain"> Pick a direction.
       </textarea>
             
       <!-- Create a box for user input, a description for it, 
