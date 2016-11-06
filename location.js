@@ -258,9 +258,21 @@
 						+ "\n\n" + "Press the 'Inventory' button to see the contents of your bag."
 						+ "\n" + "Press the 'Help' button to see this message.");
 		 }
-		 function btnInv()  {
-		 var msg = "Inventory:" + inventory;
-		 displayMessage(msg);
+		 //function btnInv()  {
+		 //var msg = "Inventory:" + inventory;
+		 //displayMessage(msg);
+		 //}
+		 
+		 // Try at the inventory output display to the user
+		 function btnInv() {
+			 displayMesssage(" Your Inventory includes: ");
+			if (keyTaken == true){
+				displayMessage("\n" + You have a key.");
+			} if (womenTaken == true){
+				displayMessage("\n" + " There is a women standing next to you");
+			} if (peanutTaken == true){
+				displayMessage ("\n" + " You have a Peanut Butter Sandwich");
+			} else displayMessage (" You have nothing in your inventory at this time.") ;
 		 }
 		 
 		 
