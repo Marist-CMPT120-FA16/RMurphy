@@ -275,8 +275,16 @@
             var desc = "";
             switch(currentLoc) {
                case 0: frontDr();
+			        document.getElementById("btnGo_S").disabled = true;
+			        document.getElementById("btnGo_W").disabled = true;
+			        document.getElementById("btnGo_E").disabled = true;
+			        document.getElementById("btnGo_N").disabled = false;
                     break;
                case 1: kitchen();
+			        document.getElementById("btnGo_S").disabled = false;
+			        document.getElementById("btnGo_W").disabled = false;
+			        document.getElementById("btnGo_E").disabled = false;
+			        document.getElementById("btnGo_N").disabled = true;
                     break;
                case 2: tunnel();
                     break;
@@ -300,6 +308,14 @@
             }
          }
 
+		 // 
+		 //Disable Button function
+		 //
+		 //     function disableElement() {
+         //          document.getElementById("btnGo_N").disabled = true;
+         //    }
+		 
+		 
           //
           // Individual functions for the locations
           //===============================================
@@ -311,6 +327,10 @@
              scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
+			 //document.getElementById("btnGo_S").disabled = true;
+			 //document.getElementById("btnGo_W").disabled = true;
+			 //document.getElementById("btnGo_E").disabled = true;
+			 //document.getElementById("btnGo_N").disabled = false;
           }
 
          function kitchen() {
@@ -484,20 +504,29 @@
 	  -->  
        <br>
        <input type="button" 
-              value="Go North"
-              onclick="btnGo_North_click();">
-       <input type="button" 
+	          id = "btnGo_N"
+              value = "Go North"
+              onclick = "btnGo_North_click();">
+
+       <input type="button"
+              id="btnGo_S"	   
               value="Go South"
               onclick="btnGo_South_click();">
-       <input type="button" 
-              value="Go East"
+       
+	   <input type="button" 
+              id="btnGo_E"
+			  value="Go East"
               onclick="btnGo_East_click();">
-       <input type="button" 
-              value="Go West"
+       
+	   <input type="button" 
+              id="btnGo_W"
+			  value="Go West"
               onclick="btnGo_West_click();">
+	   
 	   <input type="button" 
               value="Help"
               onclick="btnHelp();">
+	   
 	   <input type="button" 
               value="Inventory"
               onclick="btnInv();">
