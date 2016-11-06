@@ -270,6 +270,7 @@
        //=========================================================
        // function look is the coordinator of when a location function will be called.
        // Used with button function and message functions to display the correct location to the user.
+	   // Also will disable buttons that can not be used
        //
          function look() {
             var desc = "";
@@ -287,22 +288,58 @@
 			        document.getElementById("btnGo_N").disabled = true;
                     break;
                case 2: tunnel();
+			        document.getElementById("btnGo_S").disabled = false;
+			        document.getElementById("btnGo_W").disabled = false;
+			        document.getElementById("btnGo_E").disabled = false;
+			        document.getElementById("btnGo_N").disabled = false;
                     break;
                case 3: roomDoor();
+			        document.getElementById("btnGo_S").disabled = false;
+			        document.getElementById("btnGo_W").disabled = false;
+			        document.getElementById("btnGo_E").disabled = false;
+			        document.getElementById("btnGo_N").disabled = true;
                     break;
                case 4: pool();
+			        document.getElementById("btnGo_S").disabled = false;
+			        document.getElementById("btnGo_W").disabled = false;
+			        document.getElementById("btnGo_E").disabled = false;
+			        document.getElementById("btnGo_N").disabled = false;
                     break;
                case 5: dirtRoom();
+			        document.getElementById("btnGo_S").disabled = false;
+			        document.getElementById("btnGo_W").disabled = false;
+			        document.getElementById("btnGo_E").disabled = false;
+			        document.getElementById("btnGo_N").disabled = false;
                     break;
                case 6: dante();
+			        document.getElementById("btnGo_S").disabled = false;
+			        document.getElementById("btnGo_W").disabled = true;
+			        document.getElementById("btnGo_E").disabled = true;
+			        document.getElementById("btnGo_N").disabled = true;
                     break;
 			   case 7: greenRoom();
+			        document.getElementById("btnGo_S").disabled = true;
+			        document.getElementById("btnGo_W").disabled = false;
+			        document.getElementById("btnGo_E").disabled = true;
+			        document.getElementById("btnGo_N").disabled = true;
 				    break;
 			   case 8: pentagramRm();
+			        document.getElementById("btnGo_S").disabled = true;
+			        document.getElementById("btnGo_W").disabled = true;
+			        document.getElementById("btnGo_E").disabled = true;
+			        document.getElementById("btnGo_N").disabled = false;
 			        break;
                case 9: dampRoom();
+			        document.getElementById("btnGo_S").disabled = true;
+			        document.getElementById("btnGo_W").disabled = true;
+			        document.getElementById("btnGo_E").disabled = true;
+			        document.getElementById("btnGo_N").disabled = false;
 			        break;
                case 10: deadEnd();
+			        document.getElementById("btnGo_S").disabled = true;
+			        document.getElementById("btnGo_W").disabled = true;
+			        document.getElementById("btnGo_E").disabled = false;
+			        document.getElementById("btnGo_N").disabled = true;
                     break;			   
                default: desc = " You can not go that way";
             }
