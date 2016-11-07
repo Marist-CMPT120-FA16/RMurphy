@@ -7,7 +7,6 @@
     //         
          var currentLoc = 0;
          var score = 0;
-		 var taken = false;
          var directionErrorCount = 0;
          var limit = 5;
          var beenHere0 = false;
@@ -162,8 +161,8 @@
                    look();
 				  } else {
                    if (currentLoc === 5) {
-                 currentLoc = 8;
-                 look();				 
+                     currentLoc = 8;
+                     look();				 
                    } else {
                  directionError();               
                   }
@@ -256,8 +255,9 @@
 		 function btnHelp() {
 		 displayMessage("Valid moves are: N, S, E, W, n, s, e, w." + 
 		                "\n" + " or press a directional buttons below"
-						+ "\n\n" + "Valid commands are 'Take','Inventory' or 'Help'."
+						+ "\n\n" + "Valid commands are 'Take','Invent' or 'Help'."
 						+ "\n\n" + "Press the 'Inventory' button to see the contents of your bag."
+						+ "\n" + "Press the 'Take' button to pick up items."
 						+ "\n" + "Press the 'Help' button to see this message.");
 		 }
 		 // ***** Saving this function for later use when inventory is an array maybe **
@@ -273,13 +273,14 @@
 		 function btnInv() {
 			 if (keyTaken == true){
 				displayMessage(" You have a key.");
-			} else if (womenTaken == true){
+			} if (womenTaken == true){
 				displayMessage(" There is a women standing next to you");
-			} else if (peanutTaken == true){
+			} if (peanutTaken == true){
 				displayMessage (" You have a Peanut Butter Sandwich");
-			} else displayMessage (" You have nothing in your inventory at this time.") ;
-			displayMessage(" Your Inventory includes: ");
-		 }
+			} else if ((peanutTaken == false) && (keyTaken == false) && (womenTaken == false)) { 
+			     displayMessage (" You have nothing in your inventory at this time.") ;
+		     } displayMessage(" Your Inventory includes: ");
+		  }
 		 
 		 
        // 
@@ -379,6 +380,7 @@
           function frontDr() {
              var desc = "Location 0. You are standing in front of a yellow house";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
@@ -386,48 +388,56 @@
          function kitchen() {
              var desc = "Location 1. You walk through the door and see a kitchen";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             //descUpdate();
+			 desc = desc + "\n" + "Your Score is: " + score ;
 			 displayMessage(desc);
           }
           function tunnel() {
              var desc = "Location 2. You have entered a very long tunnel";
              scoreEval();
-             desc = desc + "\n" + "Your Score is: " + score ;
+             //descUpdate();
+			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function roomDoor() {
              var desc = "Location 3. You enter a room with a door.";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function pool() {
              var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dirtRoom() {
              var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dante() {
              var desc = "Location 6. You enter a cave with water dripping from the ceiling." + "\n" +  "Welcome to Dante's Cave!";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 		  function greenRoom() {
              var desc = "Location 7. You enter a green room" + "\n" +" You hear a far off sound." + " It sounds like crying.";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 		  function pentagramRm() {
-             var desc = "Location 8. You enter a room with a pentagram on the floor." + "\n" + "You hear an erie chanting";
+             var desc = "Location 8. You enter a room with a pentagram on the floor." + "\n" + "You hear an eerie chanting.";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
@@ -435,16 +445,25 @@
              var desc = "Location 9. You enter a cold, damp room.  You smell Peanut Butter." 
 			         + "\n" + "On a shelf in the room you find a sandwich.";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 		  function deadEnd() {
              var desc = "Location 10. You enter a cave that seems to have no exits";
              scoreEval();
+			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 
+		  //  Attempt to move repeating line into function.
+		  //     think issue I am having is related to global variable vs local
+		  //
+		  //   function descUpdate(){
+		  //	 var desc = desc + "\n" + "Your Score is: " + score ; 
+		  //   }
+		  
 		  //
           // Function to check an error in direction.  Ie: a wall has been reached
           // ========================================================================
