@@ -269,6 +269,7 @@
 		 //
 		 
 		 // Inventory output display to the user of what they have (or do not have)
+		 // NOTE -Currently locations 4,5,9 do not get an updated room description after item is taken
 		 //
 		 function btnInv() {
 			 if (keyTaken == true){
