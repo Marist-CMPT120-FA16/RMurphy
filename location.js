@@ -40,15 +40,15 @@
          
          
 		 // prepare for list of items that can be "taken"
-		 var goodies = new Array();
-		 goodies[0] = goodiesKey;
-		 goodies[1] = goodiesWoman;
-		 goodies[2] = goodiesPeanut;
+		// var goodies = new Array();
+		 //goodies[0] = goodiesKey;
+		 //goodies[1] = goodiesWoman;
+		 //goodies[2] = goodiesPeanut;
 		 
-		 // Prepare a place to store the inventory for recall later
-		 var inventory = new Array();
+		 // Prepare a place to store the inventory for recall later  - not currently used
+		 //var inventory = new Array();
 		 		 
-		 //
+		 // *** FOR LATER USE ***
 		 // what to do when user clicks inventory button
 		 // This will pront out the current array that has the inventory
 		 //
@@ -72,7 +72,7 @@
                  command = command.trim();
                  command = command.toLowerCase();
                if (command == "north" || command == "west" || command == "south" || command == "east" 
-			        || command == "help" || command == "invent") {
+			        || command == "help" || command == "take" || command == "invent") {
                        command = command.substr(0,1);
                  }
                     if (command == "n")  {
@@ -87,6 +87,8 @@
 						      btnHelp();
 						 }   else if (command == "i") {
 						       btnInv();
+						  }    else if (command == "t") {
+							     btnTake();
 					       }    else displayMessage("Please try again." +"\n" + "Type 'help' for valid commands." 
                                      + "\n" + " or press a button below")
                    
@@ -258,21 +260,25 @@
 						+ "\n\n" + "Press the 'Inventory' button to see the contents of your bag."
 						+ "\n" + "Press the 'Help' button to see this message.");
 		 }
+		 // ***** Saving this function for later use when inventory is an array maybe **
+		 //
 		 //function btnInv()  {
 		 //var msg = "Inventory:" + inventory;
 		 //displayMessage(msg);
 		 //}
+		 //
 		 
-		 // Try at the inventory output display to the user
+		 // Inventory output display to the user of what they have (or do not have)
+		 //
 		 function btnInv() {
-			 displayMesssage(" Your Inventory includes: ");
-			if (keyTaken == true){
-				displayMessage("\n" + You have a key.");
-			} if (womenTaken == true){
-				displayMessage("\n" + " There is a women standing next to you");
-			} if (peanutTaken == true){
-				displayMessage ("\n" + " You have a Peanut Butter Sandwich");
+			 if (keyTaken == true){
+				displayMessage(" You have a key.");
+			} else if (womenTaken == true){
+				displayMessage(" There is a women standing next to you");
+			} else if (peanutTaken == true){
+				displayMessage (" You have a Peanut Butter Sandwich");
 			} else displayMessage (" You have nothing in your inventory at this time.") ;
+			displayMessage(" Your Inventory includes: ");
 		 }
 		 
 		 
@@ -397,15 +403,13 @@
           }
           function pool() {
              var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
-             var womanTaken = false;
-			 scoreEval();
+             scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dirtRoom() {
              var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
-             var keyTaken = false;
-			 scoreEval();
+             scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
@@ -430,8 +434,7 @@
 		  function dampRoom() {
              var desc = "Location 9. You enter a cold, damp room.  You smell Peanut Butter." 
 			         + "\n" + "On a shelf in the room you find a sandwich.";
-             var peanutTaken = false;
-			 scoreEval();
+             scoreEval();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
@@ -442,7 +445,7 @@
              displayMessage(desc);
           }
 
-          //
+		  //
           // Function to check an error in direction.  Ie: a wall has been reached
           // ========================================================================
           // The first time a user goes to a location that is not valid (location "a" to "b" not included), they get 
@@ -518,29 +521,25 @@
 			 }
 			}
 
-			
-		/*	 function takeEval() {
-              if ((beenHere4) && (womenTaken = false )) {
-                      // figure out how to identify taken
-					  //womenTaken = true;
-					  goodiesWoman = true;
+			// 
+			// Function for the take command and ties to btnINV function for showing what player has picked up
+			//
+			 function btnTake() {
+              if ((currentLoc == 4) && (womenTaken == false )) {
+                      displayMessage ("The Women agrees to come with you.");
+					  womenTaken = true;					  
 			  }
-                 else if ((beenHere5) && (keyTaken = false )) {
-                      // figure out how to identify taken
-                      //keyTaken = true;
-					  goodiesKey = true;
+                 else if ((currentLoc == 5) && (keyTaken == false )) {
+                      displayMessage(" You put the key in your pocket.");
+                      keyTaken = true;
 			  }
-                 else if ((beenHere9) && (peanutTaken = false )) {
-                      // figure out how to identify taken
-                      //peanutTaken = true;	
-                      goodiesPeanut = true;					  
-             }
-                 
-			}
+                 else if ((currentLoc == 9) && (peanutTaken == false )) {
+                      displayMessage("You pick up the Peanut Butter Sandwich.");
+                      peanutTaken = true;	
+              } else displayMessage ("There is nothing to take here.");
+   			}
 
-       */
-
-			
+      	
          //
          // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
