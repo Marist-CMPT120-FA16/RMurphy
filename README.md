@@ -1,6 +1,6 @@
 # RMurphy
 <p> <b>Ruth's Repo </p>
-<b>CMPT 120 Class Projects  can be found herer</b>
+<b>CMPT 120 Class Projects  can be found here</b>
 <h3> Project 2 - Completed </h3>
 <h3> Project 3 - Completed </h3>
 <h3> Project 4 - Completed </h3>
