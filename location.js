@@ -189,11 +189,7 @@
                     if (currentLoc === 1) {
                        currentLoc = 5;
                        look();
-				   } else {
-                      if (currentLoc === 5) {
-                       currentLoc = 7;
-                       look();
-					} else {
+				  	} else {
                       if (currentLoc === 10) {
                        currentLoc = 2;
                        look();

@@ -1,0 +1,207 @@
+function Locations(id, name, description, descAfter, item){
+         this.id=id;
+		 this.name=name;
+		 this.desc=desc;
+		 this.descAfter=descAfter;
+		 this.item;
+		 this.validMoves = [ BAD, BAD, BAD, BAD ];
+		 this.visited = false;
+		 this.toString=function() {
+		      return "id: " + this.id + "Location: " + this.name;
+              };
+		  }
+
+var frontDr = new Location(0,
+                           "Front Door", 
+						   "You are standing in front of a yellow house",
+						   "You are standing in front of a yellow house",
+						   "");
+var kitchen = new Location(1,
+                            "Kitchen",
+							"You walk through the door and see a kitchen",
+							"You walk through the door and see a kitchen",
+							"");
+var tunnel = new Location(2,
+                          "Tunnel",
+						  "You have entered a very long tunnel",
+						  "You have entered a very long tunnel",
+						  "");
+var roomDoor = new Location(3,
+                            "Room with a Door",
+                            "You enter a room with a door.",
+							"You enter a room with a door.",
+							"");
+var pool = new Location(4,
+                        " Pool ",
+                        "You enter a room with a crystal clear pool. In the corner is a women crying.",
+						"You enter a room with a crystal clear pool.",
+						women);
+var dirtRoom = new Location(5,
+                            "Dirt Room",
+                            "You enter a room with a dirt floor and a table. On the table is an odd key.",
+							"You enter a room with a dirt floor and a table.",
+							key);
+var dante = new Location(6,
+                         "Dante's Cave",
+                         "You enter a cave with water dripping from the ceiling.",
+						 "You enter a cave with water dripping from the ceiling.",
+						 "");
+var greenRoom = new Location(7,
+                             "Room with green walls",
+                            "You enter a green room with what looks like red blood on the walls. You hear a far off sound. 
+							It almost sounds like people screaming for help.",
+							"You enter a green room with what looks like red blood on the walls. You hear a far off sound. 
+							It almost sounds like people screaming for help.",
+							"");
+var pentagramRm = new Location(8,
+                               "Pentagram Room",
+                               "You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.",
+							   "You enter a room with a pentagram on the floor. The chanting has stopped.",
+							   book);
+var dampRoom = new Location(9,
+                            "Dark Damp Room",
+							"You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you find a sandwich.",
+                            "You enter a cold, damp room.",
+							peanut);
+var deadEnd = new Location(10,
+                           "Dead End",
+                            "You enter a cave that seems to have no exits.",
+							"You enter a cave that seems to have no exits",
+							"");
+
+// item prototype
+
+function Item(id, name, description,isTaken,origLoc) {
+         this.id=id;
+		 this.name=name;
+		 this.description=description;
+		 this.isTaken==false;
+		 this.origLoc;
+		 this.toString=function() {
+		         return "id": + this.id + "item: " + this.name;
+				 };
+			}
+
+function inventory (id, name, description){
+             this.id;
+			 this.name=item.name;
+			 this.description=item.description;
+			 }
+			
+
+var women = new Item (0,
+                     "Women Crying",
+					 " There is a women crying in the corner",
+					 womenTaken==false,
+					 4);
+var key = new Item(1, 
+                   "Old Key",
+				   "Rusty Old Key for some lock", 
+				   keyTaken==false,
+				   5);
+var peanut = new Item(2, 
+                      "Sandwich",
+					  "A Gooey, Yummy Peanut Butter and Jelly Sandwich",
+					  peanutTaken==false,
+					  9);
+var book = new Item(3, 
+                    "Prayer Book", 
+					"The Book looks like something a priest would use, but the cross is upside down.",
+					bookTaken==false,
+					8);
+
+var inventory = new Inventory();
+					
+var validMoves = new Array() [ /* N S E W  */
+  /*Location[0] */   [1,0,0,0],
+  /*Location[1] */	 [1,0,5,3],
+  /*Location[2] */   [6,4,3,10],
+  /*Location[3] */	 [3,5,1,2],
+  /*Location[4] */	 [2,9,7,5],
+  /*Location[5] */	 [3,8,4,1],
+  /*Location[6] */   [6,2,6,6],
+  /*Location[7] */	 [7,7,7,4],
+  /*Location[8] */	 [5,8,8,8],
+  /*Location[9] */	 [4,9,9,9],
+  /*Location[10]*/	 [10,10,2,10]
+		    	};
+
+    function btnGo_North_click() {
+         currentLoc = validMoves[currentLoc][0];
+		 look();
+	}
+	
+    function btnGo_South_click() {
+         currentLoc = validMoves[currentLoc][0];
+		 look();
+	}
+	
+	function btnGo_East_click() {
+         currentLoc = validMoves[currentLoc][0];
+		 look();
+	}
+	
+	function btnGo_West_click() {
+         currentLoc = validMoves[currentLoc][0];
+		 look();
+	}
+	
+    function btnInv() {
+			 var message = "Your Inventory List: \n";
+			 for var i=0; i< inventory.length-1; i++){
+			 if (inventory[i] !=null) {
+			    displayMessage(inventory[i].name + ": " + inventory[i].desc + "\n);
+				}
+			}
+			
+			//
+			// if (keyTaken == true){
+			//	displayMessage(" You have a key.");
+			//} if (womenTaken == true){
+			//	displayMessage(" There is a women standing next to you");
+			//} if (peanutTaken == true){
+			//	displayMessage (" You have a Peanut Butter Sandwich");
+			//} else if ((peanutTaken == false) && (keyTaken == false) && (womenTaken == false)) { 
+			//     displayMessage (" You have nothing in your inventory at this time.") ;
+		    // } displayMessage(" Your Inventory includes: ");
+		  //}
+	    
+		
+    function btnTake() {
+	         var loc = locations[currentLoc];
+			 if (loc.item == true || loc.item == null){
+			    displayMessage("There is nothing to take");
+				} else if ((currentLoc == 4) && (womenTaken == false )) {
+                   push the item to inventory
+				   change womentaken to true
+				   update location desc
+				   displayMessage ("The Women agrees to come with you.");
+			       
+				   Inventory.push(item[currentLoc].name);
+				   displayMessage("Taken " + item[currentLoc].name + ".");
+				   item[currentLoc].isTaken==true;
+				   }
+				   
+				   womenTaken = true;					  
+				  loc.Taken == false;
+				  push item
+				  loc.desc=loc.descAfter;
+				  
+				  //var item = loc.item;
+				  //inventory[item.id]=item;
+				  //loc.item=null;
+				  displayMessage(item.name + "Added to your inventory:" + item.desc + " "};
+				  
+              //if ((currentLoc == 4) && (womenTaken == false )) {
+              //        displayMessage ("The Women agrees to come with you.");
+			//		  womenTaken = true;					  
+			 // }
+              //   else if ((currentLoc == 5) && (keyTaken == false )) {
+              //        displayMessage(" You put the key in your pocket.");
+              //        keyTaken = true;
+			 // }
+             //    else if ((currentLoc == 9) && (peanutTaken == false )) {
+             //         displayMessage("You pick up the Peanut Butter Sandwich.");
+             //         peanutTaken = true;	
+             // } else displayMessage ("There is nothing to take here.");
+   			//}
