@@ -68,7 +68,8 @@ var deadEnd = new Location(10,
                             "You enter a cave that seems to have no exits.",
 							"You enter a cave that seems to have no exits",
 							"");
-
+var locations = [frontDr, kitchen, tunnel, roomDoor, pool, dirtRoom, dante, greenRoom, pentagramRm, dampRoom, deadEnd]
+							
 // item prototype
 
 function Item(id, name, description,isTaken,origLoc) {
@@ -81,13 +82,6 @@ function Item(id, name, description,isTaken,origLoc) {
 		         return "id": + this.id + "item: " + this.name;
 				 };
 			}
-
-function inventory (id, name, description){
-             this.id;
-			 this.name=item.name;
-			 this.description=item.description;
-			 }
-			
 
 var women = new Item (0,
                      "Women Crying",
@@ -109,10 +103,17 @@ var book = new Item(3,
 					"The Book looks like something a priest would use, but the cross is upside down.",
 					bookTaken==false,
 					8);
+var items = [women, key,peanut,book];
+					
+function Inventory (id, name, description){
+             this.id;
+			 this.name=item.name;
+			 this.description=item.description;
+			 }
 
 var inventory = new Inventory();
 					
-var validMoves = new Array() [ /* N S E W  */
+var validMoves = [ /* N S E W  */
   /*Location[0] */   [1,0,0,0],
   /*Location[1] */	 [1,0,5,3],
   /*Location[2] */   [6,4,3,10],
@@ -132,25 +133,25 @@ var validMoves = new Array() [ /* N S E W  */
 	}
 	
     function btnGo_South_click() {
-         currentLoc = validMoves[currentLoc][0];
+         currentLoc = validMoves[currentLoc][1];
 		 look();
 	}
 	
 	function btnGo_East_click() {
-         currentLoc = validMoves[currentLoc][0];
+         currentLoc = validMoves[currentLoc][2];
 		 look();
 	}
 	
 	function btnGo_West_click() {
-         currentLoc = validMoves[currentLoc][0];
+         currentLoc = validMoves[currentLoc][3];
 		 look();
 	}
 	
     function btnInv() {
 			 var message = "Your Inventory List: \n";
-			 for var i=0; i< inventory.length-1; i++){
+			 for var i=0; i< Inventory.length-1; i++){
 			 if (inventory[i] !=null) {
-			    displayMessage(inventory[i].name + ": " + inventory[i].desc + "\n);
+			    displayMessage(Inventory[i].name + ": " + Inventory[i].desc + "\n);
 				}
 			}
 			
@@ -164,7 +165,7 @@ var validMoves = new Array() [ /* N S E W  */
 			//} else if ((peanutTaken == false) && (keyTaken == false) && (womenTaken == false)) { 
 			//     displayMessage (" You have nothing in your inventory at this time.") ;
 		    // } displayMessage(" Your Inventory includes: ");
-		  //}
+		  }
 	    
 		
     function btnTake() {
@@ -172,36 +173,27 @@ var validMoves = new Array() [ /* N S E W  */
 			 if (loc.item == true || loc.item == null){
 			    displayMessage("There is nothing to take");
 				} else if ((currentLoc == 4) && (womenTaken == false )) {
-                   push the item to inventory
-				   change womentaken to true
-				   update location desc
-				   displayMessage ("The Women agrees to come with you.");
-			       
-				   Inventory.push(item[currentLoc].name);
-				   displayMessage("Taken " + item[currentLoc].name + ".");
-				   item[currentLoc].isTaken==true;
-				   }
+                   displayMessage ("The Women agrees to come with you.");
+				   displayMessage(item.name + "Added to your inventory:" + item.desc + " "};
+			       Inventory.push(item[currentLoc].name);
+				   //displayMessage("Taken " + item[currentLoc].name + ".");
+				   item[currentLoc].isTaken=true;
+				   loc[currentLoc].desc=loc[currentLoc].descAfter;
+				} 
+				   else if ((currentLoc == 5) && (keyTaken == false )) {
+				       displayMessage(" You put the key in your pocket.");
+					   displayMessage(item.name + "Added to your inventory:" + item.desc + " "};
+					   Inventory.push(item[currentLoc].name);
+					   item[currentLoc].isTaken=true;
+				       loc[currentLoc].desc=loc[currentLoc].descAfter;
+				} 
+					 else if ((currentLoc == 9) && (peanutTaken == false )) {
+                      displayMessage("You pick up the Peanut Butter Sandwich.");
+					  displayMessage(item.name + "Added to your inventory:" + item.desc + " "};
+                      Inventory.push(item[currentLoc].name);
+					  item[currentLoc].isTaken=true;
+					  loc[currentLoc].desc=loc[currentLoc].descAfter;
+              } else displayMessage ("There is nothing to take here.");
+			 }
 				   
-				   womenTaken = true;					  
-				  loc.Taken == false;
-				  push item
-				  loc.desc=loc.descAfter;
-				  
-				  //var item = loc.item;
-				  //inventory[item.id]=item;
-				  //loc.item=null;
-				  displayMessage(item.name + "Added to your inventory:" + item.desc + " "};
-				  
-              //if ((currentLoc == 4) && (womenTaken == false )) {
-              //        displayMessage ("The Women agrees to come with you.");
-			//		  womenTaken = true;					  
-			 // }
-              //   else if ((currentLoc == 5) && (keyTaken == false )) {
-              //        displayMessage(" You put the key in your pocket.");
-              //        keyTaken = true;
-			 // }
-             //    else if ((currentLoc == 9) && (peanutTaken == false )) {
-             //         displayMessage("You pick up the Peanut Butter Sandwich.");
-             //         peanutTaken = true;	
-             // } else displayMessage ("There is nothing to take here.");
-   			//}
+				
