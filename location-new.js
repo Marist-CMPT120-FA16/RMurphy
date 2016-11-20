@@ -24,6 +24,10 @@
 		 var keyTaken = false;
 		 var womenTaken = false;
 		 var peanutTaken = false;
+		 var north = 0;
+		 var south = 1;
+		 var east =2;
+		 var west = 3;
 		 	 
                   
          
@@ -97,7 +101,7 @@ function Location(id, name, desc, descAfter, hasItem){
          this.id=id;
 		 this.name=name;
 		 this.desc=desc;
-		 this.descAfter=descAfter;
+		 this.descAfter;
 		 this.hasItem;
 		 this.validMoves;
 		 this.visited = false;
@@ -108,71 +112,73 @@ function Location(id, name, desc, descAfter, hasItem){
 		//		 return "";
 		//		 }
 		//	 }
-		//this.toString=functin() {
+		this.toString=function() {
 		//	 var returnVal = "";
 		//	 returnVal=this.desc + " " + this.item();
-		//	 return returnval;
+		return "id:" + this.id + "Location: " + this.name;};
 		//	 }
 		 }
 // Location instances		 
-var frontDr = new Location(0,
+var frontDr_loc = new Location(0,
                            "Front Door", 
 						   "You are standing in front of a yellow house",
 						   "You are standing in front of a yellow house",
 						   false);
-var kitchen = new Location(1,
+var kitchen_loc = new Location(1,
                             "Kitchen",
 							"You walk through the door and see a kitchen",
 							"You walk through the door and see a kitchen",
 							false);
-var tunnel = new Location(2,
+var tunnel_loc = new Location(2,
                           "Tunnel",
 						  "You have entered a very long tunnel",
 						  "You have entered a very long tunnel",
 						  false);
-var roomDoor = new Location(3,
+var roomDoor_loc = new Location(3,
                             "Room with a Door",
                             "You enter a room with a door.",
 							"You enter a room with a door.",
 							false);
-var pool = new Location(4,  
+var pool_loc = new Location(4,  
                         " Pool ",
                         "You enter a room with a crystal clear pool. In the corner is a women crying.",
 						"You enter a room with a crystal clear pool.",
 						true);
-var dirtRoom = new Location(5, 
+var dirtRoom_loc = new Location(5, 
                             "Dirt Room",
                             "You enter a room with a dirt floor and a table. On the table is an odd key.",
 							"You enter a room with a dirt floor and a table.",
 							true);
-var dante = new Location(6,
+var dante_loc = new Location(6,
                          "Dante's Cave",
                          "You enter a cave with water dripping from the ceiling.",
 						 "You enter a cave with water dripping from the ceiling.",
 						 false);
-var greenRoom = new Location(7,
+var greenRoom_loc = new Location(7,
                              "Room with green walls",
                             "You enter a green room with what looks like red blood on the walls. You hear a far off sound. "
 							+ "It almost sounds like people screaming for help.",
 							"You enter a green room with what looks like red blood on the walls. You hear a far off sound. " 
 							+ "	It almost sounds like people screaming for help.",
 							false);
-var pentagramRm = new Location(8, 
+var pentagramRm_loc = new Location(8, 
                                "Pentagram Room",
                                "You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.",
 							   "You enter a room with a pentagram on the floor. The chanting has stopped.",
 							   true);
-var dampRoom = new Location(9, 
+var dampRoom_loc = new Location(9, 
                             "Dark Damp Room",
 							"You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you find a sandwich.",
                             "You enter a cold, damp room.",
 							true);
-var deadEnd = new Location(10,
+var deadEnd_loc = new Location(10,
                            "Dead End",
                             "You enter a cave that seems to have no exits.",
 							"You enter a cave that seems to have no exits",
 							false);
-var locations = [frontDr, kitchen, tunnel, roomDoor, pool, dirtRoom, dante, greenRoom, pentagramRm, dampRoom, deadEnd];
+var locations = [frontDr_loc, kitchen_loc, tunnel_loc, roomDoor_loc, 
+                 pool_loc, dirtRoom_loc, dante_loc, greenRoom_loc, 
+				 pentagramRm_loc, dampRoom_loc, deadEnd_loc];
 							
 // item prototype
 
@@ -224,9 +230,9 @@ var inventory = new Array();
 			}
 	}
 				
-//var navBtns = [btnGo_N,btnGo_S,btnGo_E,btnGo_W ];
+//var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
 				
-// var validMoves = [ /* N S E W  */
+// var validMoves = [ /* 0 1 2 3  */
 // /*Location[0] */   [1,0,0,0],
 //  /*Location[1] */	 [1,0,5,3],
 //  /*Location[2] */   [6,4,3,10],
@@ -261,7 +267,7 @@ var inventory = new Array();
 //	}  
 	
 	
-	 //
+	         //
          // Functions for direction buttons to handle the click action by user
          //================================================================================
          // ie: First Action pressing North will bring the user/ player to location 1 from 0
@@ -272,27 +278,27 @@ var inventory = new Array();
          // bonus point if they return right back to where they started.
          //       
          function btnGo_North_click() {
-            if (Location[0]) {
-               Location.id = 1;
+            if (currentLoc === 0) {
+               currentLoc = 1;
                look();               
             } else {
-              if (Location.id === 4) {
+              if (currentLoc === 4) {
                  currentLoc = 2;
                  look();  
                } else {
-                  if (Location.id === 5){
+                  if (currentLoc === 5){
                    currentLoc = 3;
                    look();  
                  } else {
-                   if (Location.id === 2){
+                   if (currentLoc === 2){
                     currentLoc = 6;
                     look();
                   } else {
-                   if (Location.id === 8){
+                   if (currentLoc === 8){
                     currentLoc = 5;
                     look();					
                    } else {
-                   if (Location.id === 9){
+                   if (currentLoc === 9){
                     currentLoc = 4;
                     look();					
                   } else {
@@ -306,27 +312,27 @@ var inventory = new Array();
          }
 
          function btnGo_South_click() {
-            if (Location.id === 1) {
+            if (currentLoc === 1) {
                currentLoc = 0;
                look();
             } else {
-              if (Location.id === 2) {
+              if (currentLoc === 2) {
                  currentLoc = 4;
                  look();
               } else {
-               if (Location.id === 3){
+               if (currentLoc === 3){
                  currentLoc = 5;
                  look();
                } else {
-                if (Location.id === 6) {
+                if (currentLoc === 6) {
                  currentLoc = 2;
                  look();
 				 } else {
-                  if (Location.id === 4) {
+                  if (currentLoc === 4) {
                    currentLoc = 9;
                    look();
 				  } else {
-                   if (Location.id === 5) {
+                   if (currentLoc === 5) {
                      currentLoc = 8;
                      look();				 
                    } else {
@@ -340,27 +346,27 @@ var inventory = new Array();
          }
 
          function btnGo_East_click() {
-            if (Location.id === 2) {
+            if (currentLoc === 2) {
                currentLoc = 3;
                look();
             } else {
-              if (Location.id === 5) {
+              if (currentLoc === 5) {
                  currentLoc = 4;
                  look();
                } else {
-                   if (Location.id === 3) {
+                   if (currentLoc === 3) {
                       currentLoc = 1;
                       look();
                  } else {
-                    if (Location.id === 1) {
+                    if (currentLoc === 1) {
                        currentLoc = 5;
                        look();
 				  	} else {
-                      if (Location.id === 10) {
+                      if (currentLoc === 10) {
                        currentLoc = 2;
                        look();
 					 } else {
-                      if (Location.id === 4) {
+                      if (currentLoc === 4) {
                        currentLoc = 7;
                        look();
 					} else {
@@ -372,31 +378,30 @@ var inventory = new Array();
 			  }
              }
             }
-         
 
          function btnGo_West_click() {
-            if (Location.id === 4) {
+            if (currentLoc === 4) {
                 currentLoc = 5;
                 look();
              } else {
-               if (Location.id === 3) {
+               if (currentLoc === 3) {
                currentLoc = 2;
                look();
                } else {
-                 if (Location.id === 1) {
+                 if (currentLoc === 1) {
                    currentLoc = 3;
                    look();
                   } else {
-                    if (Location.id === 5) {
+                    if (currentLoc === 5) {
                        currentLoc = 1;
                        look();
 				   } else {
-                     if (Location.id === 2) {
+                     if (currentLoc === 2) {
                        currentLoc = 10;
                        look();
 					 } else {
-                       if (Location.id === 7) {
-                        currentLoc= 4;
+                       if (currentLoc === 7) {
+                        currentLoc = 4;
                         look();
                    } else {
                      directionError(); 
@@ -408,7 +413,7 @@ var inventory = new Array();
             }
          }
 
-	
+
 // 
        // Set up of locations that will be displayed for the user.
        //=========================================================
@@ -495,8 +500,8 @@ var inventory = new Array();
           // allows the description to be displayed to the user as well as a display of current score.
           //
 
-          function frontDr() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+            function frontDr() {
+             var desc = "Location 0. You are standing in front of a yellow house";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
@@ -504,75 +509,77 @@ var inventory = new Array();
           }
 
          function kitchen() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 1. You walk through the door and see a kitchen";
              scoreEval();
              //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
 			 displayMessage(desc);
           }
           function tunnel() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 2. You have entered a very long tunnel";
              scoreEval();
              //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function roomDoor() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 3. You enter a room with a door.";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function pool() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dirtRoom() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
           function dante() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 6. You enter a cave with water dripping from the ceiling." + "\n" +  "Welcome to Dante's Cave!";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 		  function greenRoom() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 7. You enter a green room" + "\n" +" You hear a far off sound." + " It sounds like crying.";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 		  function pentagramRm() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 8. You enter a room with a pentagram on the floor." + "\n" + "You hear an eerie chanting.";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 		  function dampRoom() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 9. You enter a cold, damp room.  You smell Peanut Butter." 
+			         + "\n" + "On a shelf in the room you find a sandwich.";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
 		  function deadEnd() {
-             var desc = Location.id + ": " + Location.desc + "\n";
+             var desc = "Location 10. You enter a cave that seems to have no exits";
              scoreEval();
 			 //descUpdate();
 			 desc = desc + "\n" + "Your Score is: " + score ;
              displayMessage(desc);
           }
+
 
 		
 // function for the take button
@@ -580,30 +587,30 @@ var inventory = new Array();
 		
     function btnTake() {
 	        // var loc = locations[currentLoc];
-			 if (item.isTaken == true || Location.hasItem == false){
+			 if (item[i].isTaken == true || Location[i].hasItem == false){
 			    displayMessage("There is nothing to take");
-				} else if ((Location.id == 4) && (item[4].isTaken == false )) {
+				} else if ((Location.id === 4) && (item[4].isTaken === false )) {
                    displayMessage ("The Women agrees to come with you.");
 				   displayMessage(item[4].name + "Added to your inventory:" + " ");
 			       inventory.push(item[4].name);
 				   item[4].isTaken=true;
 				   Location[4].desc=Location[4].descAfter;
 				} 
-				   else if ((Location.id == 5) && (item[5].isTaken == false )) {
+				   else if ((Location.id === 5) && (item[5].isTaken === false )) {
 				       displayMessage(" You put the key in your pocket.");
 					   displayMessage(item[5].name + "Added to your inventory:" + " ");
 					   inventory.push(item[5].name);
 					   item[5].isTaken=true;
 				       Location[5].desc=Location[5].descAfter;
 				} 
-					 else if ((Location.id == 9) && (item[9].isTaken == false )) {
+					 else if ((Location.id === 9) && (item[9].isTaken === false )) {
                       displayMessage("You pick up the Peanut Butter Sandwich.");
 					  displayMessage(item[9].name + "Added to your inventory:" +  " ");
                       Inventory.push(item[9].name);
 					  item[9].isTaken=true;
 					  Location[9].desc=Location[9].descAfter;
 				}	  
-					  else if ((Location.id == 8) && (item[8].isTaken == false )) {
+					  else if ((Location.id === 8) && (item[8].isTaken === false )) {
                       displayMessage("You pick up " + item[8].name );
 					  displayMessage(item[8].name + "Added to your inventory:" + " ");
                       Inventory.push(item[8].name);
@@ -644,47 +651,47 @@ var inventory = new Array();
             //
               function scoreEval() {
                   if (! beenHere0) {
-                      if (Location.id === 0) {
+                      if (currentLoc === 0) {
                         score = score + 5;
                         beenHere0 = true; 					
               } 
-                 else if ((! beenHere1) && (Location.id === 1 )) {
+                 else if ((! beenHere1) && (currentLoc === 1 )) {
                       score = score + 5;
                       beenHere1 = true;
 			  }
-                 else if ((! beenHere2) && (Location.id === 2 )) {
+                 else if ((! beenHere2) && (currentLoc === 2 )) {
                       score = score + 5;
                       beenHere2 = true;
 			  }
-                 else if ((! beenHere3) && (Location.id === 3 )) {
+                 else if ((! beenHere3) && (currentLoc === 3 )) {
                       score = score + 5;
                       beenHere3 = true;			
              }
-                 else if ((! beenHere4) && (Location.id === 4 )) {
+                 else if ((! beenHere4) && (currentLoc === 4 )) {
                       score = score + 5;
                       beenHere4 = true;			
              }
-                 else if ((! beenHere5) && (Location.id === 5 )) {
+                 else if ((! beenHere5) && (currentLoc === 5 )) {
                       score = score + 5;
                       beenHere5 = true;			
              }
-                 else if ((! beenHere6) && (Location.id === 6 )) {
+                 else if ((! beenHere6) && (currentLoc === 6 )) {
                       score = score + 5;					  
                       beenHere6 = true;						  
              }   
-			     else if ((! beenHere7) && (Location.id === 7 )) {
+			     else if ((! beenHere7) && (currentLoc === 7 )) {
 			          score = score + 5;
 					  beenHere7 = true;
 	         }   
-			     else if ((! beenHere8) && (Location.id === 8 )) {
+			     else if ((! beenHere8) && (currentLoc === 8 )) {
 			          score = score + 5;
 					  beenHere8 = true;
              }   
-			    else if ((! beenHere9) && (Location.id === 9 )) {
+			    else if ((! beenHere9) && (currentLoc === 9 )) {
 			          score = score + 5;
 					  beenHere9 = true;
              }   
-			    else if ((! beenHere10) && (Location.id === 10 )) {
+			    else if ((! beenHere10) && (currentLoc === 10 )) {
 			          score = score + 5;
 					  beenHere10 = true;
 			  }
