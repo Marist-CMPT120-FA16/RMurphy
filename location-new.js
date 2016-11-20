@@ -232,7 +232,7 @@ var inventory = new Array();
 				
 //var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
 				
-/var validMoves = [ /* 0 1 2 3  */
+var validMoves = [ /* N S E W  */
   /*Location[0] */   [1,0,0,0],
    /*Location[1] */	 [1,0,5,3],
   /*Location[2] */   [6,4,3,10],
@@ -249,169 +249,35 @@ var inventory = new Array();
    function btnGo_North_click() {
          currentLoc = validMoves[currentlLoc][0]];
     	 look();
-	}
+		 else{
+			 directionError();
+		    }
+		 }
 
    function btnGo_South_click() {
         currentLoc = validMoves[currentLoc][1]];
 		 look();
-	}
+         else {
+			 directionError();
+	       }
+	    } 
 	
 	function btnGo_East_click() {
         currentLoc = validMoves[currentLoc][2]];
 		 look();
-    }
+	         else {
+               directionError(); 
+	        }
+    	}
 	
 	function btnGo_West_click() {
         currentLoc = validMoves[currentLoc][3]];
 		 look();
-	}  
+	    else {
+		    directionError();
+	        } 
+        }		
 	
-	
-	         //
-         // Functions for direction buttons to handle the click action by user
-         //================================================================================
-         // ie: First Action pressing North will bring the user/ player to location 1 from 0
-         // when location is at 4, player moved to location 2.  
-         // Error message is put in text box if no valid location is picked for that button
-         //  
-         // 10-14-16  - to hit all 6 locations from 0; solution is N,W,S,W,N,N == 0,1,3,5,4,2,6)
-         // bonus point if they return right back to where they started.
-         //       
-         function btnGo_North_click() {
-            if (currentLoc === 0) {
-               currentLoc = 1;
-               look();               
-            } else {
-              if (currentLoc === 4) {
-                 currentLoc = 2;
-                 look();  
-               } else {
-                  if (currentLoc === 5){
-                   currentLoc = 3;
-                   look();  
-                 } else {
-                   if (currentLoc === 2){
-                    currentLoc = 6;
-                    look();
-                  } else {
-                   if (currentLoc === 8){
-                    currentLoc = 5;
-                    look();					
-                   } else {
-                   if (currentLoc === 9){
-                    currentLoc = 4;
-                    look();					
-                  } else {
-                    directionError(); 
-                  }
-				 }
-				}
-               }
-              }
-             }            
-         }
-
-         function btnGo_South_click() {
-            if (currentLoc === 1) {
-               currentLoc = 0;
-               look();
-            } else {
-              if (currentLoc === 2) {
-                 currentLoc = 4;
-                 look();
-              } else {
-               if (currentLoc === 3){
-                 currentLoc = 5;
-                 look();
-               } else {
-                if (currentLoc === 6) {
-                 currentLoc = 2;
-                 look();
-				 } else {
-                  if (currentLoc === 4) {
-                   currentLoc = 9;
-                   look();
-				  } else {
-                   if (currentLoc === 5) {
-                     currentLoc = 8;
-                     look();				 
-                   } else {
-                 directionError();               
-                  }
-				 }
-				}
-               } 
-              }
-             }
-         }
-
-         function btnGo_East_click() {
-            if (currentLoc === 2) {
-               currentLoc = 3;
-               look();
-            } else {
-              if (currentLoc === 5) {
-                 currentLoc = 4;
-                 look();
-               } else {
-                   if (currentLoc === 3) {
-                      currentLoc = 1;
-                      look();
-                 } else {
-                    if (currentLoc === 1) {
-                       currentLoc = 5;
-                       look();
-				  	} else {
-                      if (currentLoc === 10) {
-                       currentLoc = 2;
-                       look();
-					 } else {
-                      if (currentLoc === 4) {
-                       currentLoc = 7;
-                       look();
-					} else {
-                      directionError(); 
-                  }
-				 }
-			    }
-               }
-			  }
-             }
-            }
-
-         function btnGo_West_click() {
-            if (currentLoc === 4) {
-                currentLoc = 5;
-                look();
-             } else {
-               if (currentLoc === 3) {
-               currentLoc = 2;
-               look();
-               } else {
-                 if (currentLoc === 1) {
-                   currentLoc = 3;
-                   look();
-                  } else {
-                    if (currentLoc === 5) {
-                       currentLoc = 1;
-                       look();
-				   } else {
-                     if (currentLoc === 2) {
-                       currentLoc = 10;
-                       look();
-					 } else {
-                       if (currentLoc === 7) {
-                        currentLoc = 4;
-                        look();
-                   } else {
-                     directionError(); 
-                 }
-			    }
-			   }
-              }
-             }              
-            }
-         }
 
 
 // 
@@ -422,166 +288,36 @@ var inventory = new Array();
 	   // Also will disable buttons that can not be used
        //
          function look() {
-            var desc = "";
-            switch(currentLoc) {
-               case 0: frontDr();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 1: kitchen();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;
-               case 2: tunnel();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 3: roomDoor();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;
-               case 4: pool();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 5: dirtRoom();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 6: dante();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;
-			   case 7: greenRoom();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = true;
-				    break;
-			   case 8: pentagramRm();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = false;
-			        break;
-               case 9: dampRoom();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = false;
-			        break;
-               case 10: deadEnd();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;			   
-               default: desc = " You can not go that way";
-            }
-         }
+            var loc=location[currentLoc];
+			var desc = loc.name + ": " + loc.desc + "\n";
+            if loc.visited === false){
+				score=score + 5;
+				loc.visited=true;
+			}
+			   document.getElementById("btnGo_S").disabled = true;
+			   document.getElementById("btnGo_W").disabled = true;
+			   document.getElementById("btnGo_E").disabled = true;
+			   document.getElementById("btnGo_N").disabled = false;
+			
+			if (loc.id === validMoves[currentLoc[0]]){
+				document.getElementById("btnGo_N").disabled = true;
+			}
+			
+			if (loc.id === validMoves[currentLoc[1]]){
+				document.getElementById("btnGo_S").disabled = true;
+			}
+			
+			if (loc.id === validMoves[currentLoc[2]]){
+				document.getElementById("btnGo_E").disabled = true;
+			}
+			
+			if (loc.id === validMoves[currentLoc[3]]){
+				document.getElementById("btnGo_W").disabled = true;
+			}
+			displayMessage(desc + "Your Score is: " + score +"\n")
+		 }
+		 
 
-          //
-          // Individual functions for the locations
-          //===============================================
-          // allows the description to be displayed to the user as well as a display of current score.
-          //
-
-            function frontDr() {
-             var desc = "Location 0. You are standing in front of a yellow house";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-
-         function kitchen() {
-             var desc = "Location 1. You walk through the door and see a kitchen";
-             scoreEval();
-             //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-			 displayMessage(desc);
-          }
-          function tunnel() {
-             var desc = "Location 2. You have entered a very long tunnel";
-             scoreEval();
-             //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function roomDoor() {
-             var desc = "Location 3. You enter a room with a door.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function pool() {
-             var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function dirtRoom() {
-             var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function dante() {
-             var desc = "Location 6. You enter a cave with water dripping from the ceiling." + "\n" +  "Welcome to Dante's Cave!";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function greenRoom() {
-             var desc = "Location 7. You enter a green room" + "\n" +" You hear a far off sound." + " It sounds like crying.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function pentagramRm() {
-             var desc = "Location 8. You enter a room with a pentagram on the floor." + "\n" + "You hear an eerie chanting.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function dampRoom() {
-             var desc = "Location 9. You enter a cold, damp room.  You smell Peanut Butter." 
-			         + "\n" + "On a shelf in the room you find a sandwich.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function deadEnd() {
-             var desc = "Location 10. You enter a cave that seems to have no exits";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-
-
-		
 // function for the take button
 // puts items into inventory, notify user and updates the location description
 		
