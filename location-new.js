@@ -232,39 +232,39 @@ var inventory = new Array();
 				
 //var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
 				
-// var validMoves = [ /* 0 1 2 3  */
-// /*Location[0] */   [1,0,0,0],
-//  /*Location[1] */	 [1,0,5,3],
-//  /*Location[2] */   [6,4,3,10],
-// /*Location[3] */	 [3,5,1,2],
-//  /*Location[4] */	 [2,9,7,5],
-//  /*Location[5] */	 [3,8,4,1],
-//  /*Location[6] */   [6,2,6,6],
-//  /*Location[7] */	 [7,7,7,4],
- // /*Location[8] */	 [5,8,8,8],
- // /*Location[9] */	 [4,9,9,9],
- // /*Location[10]*/	 [10,10,2,10]
-//		    	];
+/var validMoves = [ /* 0 1 2 3  */
+  /*Location[0] */   [1,0,0,0],
+   /*Location[1] */	 [1,0,5,3],
+  /*Location[2] */   [6,4,3,10],
+ /*Location[3] */	 [3,5,1,2],
+  /*Location[4] */	 [2,9,7,5],
+  /*Location[5] */	 [3,8,4,1],
+  /*Location[6] */   [6,2,6,6],
+  /*Location[7] */	 [7,7,7,4],
+  /*Location[8] */	 [5,8,8,8],
+  /*Location[9] */	 [4,9,9,9],
+  /*Location[10]*/	 [10,10,2,10],
+	    	];
 //
- //  function btnGo_North_click() {
- //        currentLoc = validMoves[Location[0].id];
-//		 look();
-//	}
-//	
-  //  function btnGo_South_click() {
- //        currentLoc = validMoves[currentLoc][1];
-//		 look();
-//	}
-//	
-//	function btnGo_East_click() {
- //        currentLoc = validMoves[currentLoc][2];
-//		 look();
-//	}
-//	
-//	function btnGo_West_click() {
- //        currentLoc = validMoves[currentLoc][3];
-//		 look();
-//	}  
+   function btnGo_North_click() {
+         currentLoc = validMoves[currentlLoc][0]];
+    	 look();
+	}
+
+   function btnGo_South_click() {
+        currentLoc = validMoves[currentLoc][1]];
+		 look();
+	}
+	
+	function btnGo_East_click() {
+        currentLoc = validMoves[currentLoc][2]];
+		 look();
+    }
+	
+	function btnGo_West_click() {
+        currentLoc = validMoves[currentLoc][3]];
+		 look();
+	}  
 	
 	
 	         //
