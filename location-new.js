@@ -259,9 +259,9 @@ var validMoves = [
 				score=score + 5;
 				loc.visited=true;
 			}
-			   document.getElementById("btnGo_S").disabled = true;
-			   document.getElementById("btnGo_W").disabled = true;
-			   document.getElementById("btnGo_E").disabled = true;
+			   document.getElementById("btnGo_S").disabled = false;
+			   document.getElementById("btnGo_W").disabled = false;
+			   document.getElementById("btnGo_E").disabled = false;
 			   document.getElementById("btnGo_N").disabled = false;
 			
 			if (loc.id === validMoves[currentLoc[0]]){
