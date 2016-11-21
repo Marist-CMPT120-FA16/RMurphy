@@ -253,7 +253,7 @@ var validMoves = [
 	   // Also will disable buttons that can not be used
        //
          function look() {
-            var loc = location[currentLoc];
+            var loc = locations[currentLoc];
 			var desc = loc.name + ": " + loc.desc + "\n";
             if (loc.visited === false){
 				score=score + 5;
