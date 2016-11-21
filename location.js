@@ -1,6 +1,7 @@
-// Project 4 November 1, 2016
-// Ruth Murphy CMPT 120
-// Location.js file to accompany Game called "Murphy's World"
+//project 5 adding objects and arrays
+// location-new.js 
+// Ruth Murphy
+// prep for update to loction.js
 
     //
     // List of Global Variables for Game
@@ -23,26 +24,9 @@
 		 var keyTaken = false;
 		 var womenTaken = false;
 		 var peanutTaken = false;
-		 	 
-                  
+		 
+	     
          //
-         // Initialization function for executing whne page (re)loads
-         //
-         function init() {
-		     desc = "You are standing in front of a yellow house";
-             displayMessage(desc);
-			 document.getElementById("btnGo_S").disabled = true;
-			 document.getElementById("btnGo_W").disabled = true;
-			 document.getElementById("btnGo_E").disabled = true;
-			 document.getElementById("btnGo_N").disabled = false;
-         }
-         
-         
-		 // Prepare a place to store the inventory for recall later  - not currently used
-		 //var inventory = new Array();
-		 		 
-		 	 		 
-		 //
          // Command Button handler for input by user.
          //=======================================================================
          // 1) trim off extra spaces
@@ -53,7 +37,6 @@
          // NOTE: Script will take user input and validate it is a direction.
          // I have scripted this to allow for entry of more than just a sinlge letter  (N, W, E, S, n, e ,w, s).
          // it will only validate to these single letter directions.
-         // Customer indicated a need for only N, S, E, W, n, s, e, w at this time
          //  Flexability was added for the user though.
          //
          function buttonGo() {
@@ -79,160 +62,9 @@
 						  }    else if (command == "t") {
 							     btnTake();
 					       }    else displayMessage("Please try again." +"\n" + "Type 'help' for valid commands." 
-                                     + "\n" + " or press a button below")
-                   
-                 /*  Use for testing to ensure txt is processed correctly uncomment next line for to testing
-                     displayMessage(command);   */
-            }
-
-         //
-         // Functions for direction buttons to handle the click action by user
-         //================================================================================
-         // ie: First Action pressing North will bring the user/ player to location 1 from 0
-         // when location is at 4, player moved to location 2.  
-         // Error message is put in text box if no valid location is picked for that button
-         //  
-         // 10-14-16  - to hit all 6 locations from 0; solution is N,W,S,W,N,N == 0,1,3,5,4,2,6)
-         // bonus point if they return right back to where they started.
-         //       
-         function btnGo_North_click() {
-            if (currentLoc === 0) {
-               currentLoc = 1;
-               look();               
-            } else {
-              if (currentLoc === 4) {
-                 currentLoc = 2;
-                 look();  
-               } else {
-                  if (currentLoc === 5){
-                   currentLoc = 3;
-                   look();  
-                 } else {
-                   if (currentLoc === 2){
-                    currentLoc = 6;
-                    look();
-                  } else {
-                   if (currentLoc === 8){
-                    currentLoc = 5;
-                    look();					
-                   } else {
-                   if (currentLoc === 9){
-                    currentLoc = 4;
-                    look();					
-                  } else {
-                    directionError(); 
-                  }
-				 }
-				}
-               }
-              }
-             }            
-         }
-
-         function btnGo_South_click() {
-            if (currentLoc === 1) {
-               currentLoc = 0;
-               look();
-            } else {
-              if (currentLoc === 2) {
-                 currentLoc = 4;
-                 look();
-              } else {
-               if (currentLoc === 3){
-                 currentLoc = 5;
-                 look();
-               } else {
-                if (currentLoc === 6) {
-                 currentLoc = 2;
-                 look();
-				 } else {
-                  if (currentLoc === 4) {
-                   currentLoc = 9;
-                   look();
-				  } else {
-                   if (currentLoc === 5) {
-                     currentLoc = 8;
-                     look();				 
-                   } else {
-                 directionError();               
-                  }
-				 }
-				}
-               } 
-              }
-             }
-         }
-
-         function btnGo_East_click() {
-            if (currentLoc === 2) {
-               currentLoc = 3;
-               look();
-            } else {
-              if (currentLoc === 5) {
-                 currentLoc = 4;
-                 look();
-               } else {
-                   if (currentLoc === 3) {
-                      currentLoc = 1;
-                      look();
-                 } else {
-                    if (currentLoc === 1) {
-                       currentLoc = 5;
-                       look();
-				  	} else {
-                      if (currentLoc === 10) {
-                       currentLoc = 2;
-                       look();
-					 } else {
-                      if (currentLoc === 4) {
-                       currentLoc = 7;
-                       look();
-					} else {
-                      directionError(); 
-                  }
-				 }
-			    }
-               }
-			  }
-             }
-            }
-         }
-
-         function btnGo_West_click() {
-            if (currentLoc === 4) {
-                currentLoc = 5;
-                look();
-             } else {
-               if (currentLoc === 3) {
-               currentLoc = 2;
-               look();
-               } else {
-                 if (currentLoc === 1) {
-                   currentLoc = 3;
-                   look();
-                  } else {
-                    if (currentLoc === 5) {
-                       currentLoc = 1;
-                       look();
-				   } else {
-                     if (currentLoc === 2) {
-                       currentLoc = 10;
-                       look();
-					 } else {
-                       if (currentLoc === 7) {
-                        currentLoc = 4;
-                        look();
-                   } else {
-                     directionError(); 
-                 }
-			    }
-			   }
-              }
-             }              
-            }
-         }
-
-		 //
+                                     + "\n" + " or press a button below");
+		                }
+//
 		 // Set up Help and inventory Button actions
 		 //=========================================
 		 // functions to execute when the help and inventory buttons are pressed
@@ -245,199 +77,269 @@
 						+ "\n\n" + "Press the 'Inventory' button to see the contents of your bag."
 						+ "\n" + "Press the 'Take' button to pick up items."
 						+ "\n" + "Press the 'Help' button to see this message.");
+		            }
+         //
+         // Initialization function for executing when page (re)loads
+         //
+     function init() {
+	   desc = "You are standing in front of a yellow house";
+       displayMessage(desc);
+	   document.getElementById("btnGo_S").disabled = true;
+	   document.getElementById("btnGo_W").disabled = true;
+	   document.getElementById("btnGo_E").disabled = true;
+	   document.getElementById("btnGo_N").disabled = false;
+       }
+
+    //Location Prototype
+    function Location(id, name, desc, descAfter, item,hasItem){
+         this.id=id;
+		 this.name=name;
+		 this.desc=desc;
+		 this.descAfter=descAfter;
+		 this.item=item;
+		 this.hasItem=hasItem;
+		 this.validMoves;
+		 this.visited = false;
+		 function toString(){
+		   return desc;
 		 }
-		 // ***** Saving this function for later use when inventory is an array maybe **
-		 //
-		 //function btnInv()  {
-		 //var msg = "Inventory:" + inventory;
-		 //displayMessage(msg);
-		 //}
-		 //
-		 
-		 // Inventory output display to the user of what they have (or do not have)
-		 // NOTE -Currently locations 4,5,9 do not get an updated room description after item is taken
-		 //
-		 function btnInv() {
-			 if (keyTaken == true){
-				displayMessage(" You have a key.");
-			} if (womenTaken == true){
-				displayMessage(" There is a women standing next to you");
-			} if (peanutTaken == true){
-				displayMessage (" You have a Peanut Butter Sandwich");
-			} else if ((peanutTaken == false) && (keyTaken == false) && (womenTaken == false)) { 
-			     displayMessage (" You have nothing in your inventory at this time.") ;
-		     } displayMessage(" Your Inventory includes: ");
-		  }
-		 
-		 
-       // 
+		}
+   //
+   // Location instances- reformated to be cleaner
+   //
+   //location 0		 
+   var frontDr_loc = new Location();
+	frontDr_loc.id=0;
+	frontDr_loc.name="Front Door";
+	frontDr_loc.desc="You are standing in front of a yellow house";
+	frontDr_loc.descAfter= "You are standing in front of a yellow house";
+	frontDr_loc.item ="";
+	frontDr_loc.hasItem=false;
+
+	//location 1
+var kitchen_loc = new Location();
+kitchen_loc.id=1;
+kitchen_loc.name= "Kitchen";
+kitchen_loc.desc="You walk through the door and see a kitchen";
+kitchen_loc.descAfter="You walk through the door and see a kitchen";
+kitchen_loc.item="";
+kitchen_loc.hasItem= false;
+
+	//location 2
+var tunnel_loc = new Location();
+tunnel_loc.id=2;
+tunnel_loc.name ="Tunnel";
+tunnel_loc.desc ="You have entered a very long tunnel";
+tunnel_loc.descAfter= "You have entered a very long tunnel";
+tunnel_loc.item= "";
+tunnel_loc.hasItem=false;
+
+	//location 3
+var roomDoor_loc = new Location();
+roomDoor_loc.id=3;
+roomDoor_loc.name= "Room with a Door"
+roomDoor_loc.desc= "You enter a room with a door.";
+roomDoor_loc.descAfter="You enter a room with a door.";
+roomDoor_loc.item="";
+roomDoor_loc.hasItem=false;
+
+	//location 4
+var pool_loc = new Location();
+pool_loc.id=4;
+pool_loc.name=" Pool ";
+pool_loc.desc="You enter a room with a crystal clear pool. In the corner is a women crying.";
+pool_loc.descAfter="You enter a room with a crystal clear pool.";
+pool_loc.item=women;
+pool_loc.hasItem= true;
+
+	//location 5
+var dirtRoom_loc = new Location();
+dirtRoom_loc.id=5;
+dirtRoom_loc.name="Dirt Room";
+dirtRoom_loc.desc="You enter a room with a dirt floor and a table. On the table is an odd key.";
+dirtRoom_loc.descAfter="You enter a room with a dirt floor and a table.";
+dirtRoom_loc.item=key;
+dirtRoom_loc.hasItem= true;
+
+	//location6
+var dante_loc = new Location();
+dante_loc.id=6;
+dante_loc.name= "Dante's Cave";
+dante_loc.desc="You enter a cave with water dripping from the ceiling.";
+dante_loc.descAfter="You enter a cave with water dripping from the ceiling.";
+dante_loc.item="";
+dante_loc.hasItem=false;
+
+	//location 7
+var greenRoom_loc = new Location();
+greenRoom_loc.id=7;
+greenRoom_loc.name="Room with green walls";
+greenRoom_loc.desc="You enter a green room with what looks like red blood on the walls. You hear a far off sound. It almost sounds like people screaming for help.";
+greenRoom_loc.descAfter="You enter a green room with what looks like red blood on the walls. You hear a far off sound. It almost sounds like people screaming for help.";
+greenRoom_loc.item="";
+greenRoom_loc.hasItem=false;
+
+	//location 8
+var pentagramRm_loc = new Location();
+pentagramRm_loc.id=8;
+pentagramRm_loc.name="Pentagram Room";
+pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.";
+pentagramRm_loc.descAfter="You enter a room with a pentagram on the floor. The chanting has stopped.";
+pentagramRm_loc.item=book;
+pentagramRm_loc.hasItem= true;
+
+	//location 9
+var dampRoom_loc = new Location();
+dampRoom_loc.id=9;
+dampRoom_loc.name="Dark Damp Room";
+dampRoom_loc.desc="You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you find a sandwich.";
+dampRoom_loc.descAfter="You enter a cold, damp room.";
+dampRoom_loc.item=peanut;
+dampRoom_loc.hasItem=true;
+
+	//location 10
+var deadEnd_loc = new Location();
+deadEnd_loc.id=10;
+deadEnd_loc.name="Dead End";
+deadEnd_loc.desc="You enter a cave that seems to have no exits.";
+deadEnd_loc.descAfter="You enter a cave that seems to have no exits";
+deadEnd_loc.item="";
+deadEnd_loc.hasItem= false;
+	
+	// global Location Variables
+	var locations = [frontDr_loc, kitchen_loc, tunnel_loc, roomDoor_loc, pool_loc, dirtRoom_loc, dante_loc, greenRoom_loc, 
+                 pentagramRm_loc, dampRoom_loc, deadEnd_loc];
+//							
+// item prototype
+//
+function Item(id, name, desc,isTaken, origLoc) {
+         this.id=id;
+		 this.name=name;
+		 this.desc=desc;
+		 this.isTaken = isTaken;
+		 this.origLoc;
+		 function toString(){
+		   return desc;
+		 }
+      }
+		
+// item instances
+var women = new Item (4, "Women Crying", " There is a women crying in the corner", false,4);
+var key = new Item(5, "Old Key", "Rusty Old Key for some lock", false,5);
+var book = new Item(8, "Prayer Book", "The Book looks like something a priest would use, but the cross is upside down.",false,8);
+var peanut = new Item(9, "Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich", false,9);
+
+
+var items = new Array ();
+items[4] = women;
+items[5] = key;
+items[8] = book;
+items[9] = peanut
+
+// prep for container for inventory - empty array to start					
+var inventory = new Array();
+//
+//function for the inventory button to display the current inventory
+//
+      function btnInv(){
+	     var msg = "Inventory: " + inventory;
+         displayMessage(msg);
+         }
+		
+        // was not needed, but leaving for future use - button array
+        //          var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
+
+//
+// Array for the movement of the player.  This shows all of the valid moves allowed from each location.
+//		
+var validMoves = [
+                   // N S E W 
+  /*Location[0] */   [1,0,0,0],
+   /*Location[1] */	 [1,0,5,3],
+  /*Location[2] */   [6,4,3,10],
+ /*Location[3] */	 [3,5,1,2],
+  /*Location[4] */	 [2,9,7,5],
+  /*Location[5] */	 [3,8,4,1],
+  /*Location[6] */   [6,2,6,6],
+  /*Location[7] */	 [7,7,7,4],
+  /*Location[8] */	 [5,8,8,8],
+  /*Location[9] */	 [4,9,9,9],
+  /*Location[10]*/	 [10,10,2,10]
+	        	];
+
+   function btnGo_North_click() {
+         currentLoc = validMoves[currentLoc][0];
+    	 look();
+		 }
+
+   function btnGo_South_click() {
+        currentLoc = validMoves[currentLoc][1];
+		 look();
+         } 
+	
+	function btnGo_East_click() {
+        currentLoc = validMoves[currentLoc][2];
+		 look();
+	      }
+    		
+	function btnGo_West_click() {
+        currentLoc = validMoves[currentLoc][3];
+		 look();
+	     }		
+	
+
+
        // Set up of locations that will be displayed for the user.
        //=========================================================
        // function look is the coordinator of when a location function will be called.
+	   // scoring is done based on the players being in the room already or not.
        // Used with button function and message functions to display the correct location to the user.
-	   // Also will disable buttons that can not be used
+	   // TO DO -!!!!Also will disable buttons that can not be used 11-20-issue-buttons do not always gray out
        //
          function look() {
-            var desc = "";
-            switch(currentLoc) {
-               case 0: frontDr();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 1: kitchen();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;
-               case 2: tunnel();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 3: roomDoor();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;
-               case 4: pool();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 5: dirtRoom();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = false;
-                    break;
-               case 6: dante();
-			        document.getElementById("btnGo_S").disabled = false;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;
-			   case 7: greenRoom();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = false;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = true;
-				    break;
-			   case 8: pentagramRm();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = false;
-			        break;
-               case 9: dampRoom();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = true;
-			        document.getElementById("btnGo_N").disabled = false;
-			        break;
-               case 10: deadEnd();
-			        document.getElementById("btnGo_S").disabled = true;
-			        document.getElementById("btnGo_W").disabled = true;
-			        document.getElementById("btnGo_E").disabled = false;
-			        document.getElementById("btnGo_N").disabled = true;
-                    break;			   
-               default: desc = " You can not go that way";
-            }
-         }
-
-		 		 
-          //
-          // Individual functions for the locations
-          //===============================================
-          // allows the description to be displayed to the user as well as a display of current score.
-          //
-
-          function frontDr() {
-             var desc = "Location 0. You are standing in front of a yellow house";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-
-         function kitchen() {
-             var desc = "Location 1. You walk through the door and see a kitchen";
-             scoreEval();
-             //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-			 displayMessage(desc);
-          }
-          function tunnel() {
-             var desc = "Location 2. You have entered a very long tunnel";
-             scoreEval();
-             //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function roomDoor() {
-             var desc = "Location 3. You enter a room with a door.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function pool() {
-             var desc = "Location 4. You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function dirtRoom() {
-             var desc = "Location 5. You enter a room with a dirt floor and a table." + "\n" + "On the table is an odd key.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-          function dante() {
-             var desc = "Location 6. You enter a cave with water dripping from the ceiling." + "\n" +  "Welcome to Dante's Cave!";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function greenRoom() {
-             var desc = "Location 7. You enter a green room" + "\n" +" You hear a far off sound." + " It sounds like crying.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function pentagramRm() {
-             var desc = "Location 8. You enter a room with a pentagram on the floor." + "\n" + "You hear an eerie chanting.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function dampRoom() {
-             var desc = "Location 9. You enter a cold, damp room.  You smell Peanut Butter." 
-			         + "\n" + "On a shelf in the room you find a sandwich.";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-		  function deadEnd() {
-             var desc = "Location 10. You enter a cave that seems to have no exits";
-             scoreEval();
-			 //descUpdate();
-			 desc = desc + "\n" + "Your Score is: " + score ;
-             displayMessage(desc);
-          }
-
-		  
+            var loc = locations[currentLoc];
+			var desc = loc.name + ": " + loc.desc + "\n";
+            if (loc.visited === false){
+				score=score + 5;
+				loc.visited=true;
+			}
+			   document.getElementById("btnGo_S").disabled = false;
+			   document.getElementById("btnGo_W").disabled = false;
+			   document.getElementById("btnGo_E").disabled = false;
+			   document.getElementById("btnGo_N").disabled = false;
+			
+			if (loc.id === validMoves[currentLoc[0]]){
+				document.getElementById("btnGo_N").disabled = true;
+			} 
+			if (loc.id === validMoves[currentLoc[1]]){
+				document.getElementById("btnGo_S").disabled = true;
+			}
+			if (loc.id === validMoves[currentLoc[2]]){
+				document.getElementById("btnGo_E").disabled = true;
+			}
+			if (loc.id === validMoves[currentLoc[3]]){
+				document.getElementById("btnGo_W").disabled = true;
+			}
+			displayMessage(desc + "Your Score is: " + score +"\n");
+		 }
+		 
+       
+// function for the take button
+// puts items into inventory, notify user and updates the location description
+		
+    function btnTake(item) {
+	   var loc = locations[currentLoc];
+	   if (loc.hasItem === false){
+	   displayMessage("There is nothing to take here");
+	   } else if (loc.hasItem === true){
+	   inventory.push(items[currentLoc].name);
+		items[currentLoc].isTaken = true;
+		loc.hasItem = false;
+		loc.desc=loc.descAfter
+		displayMessage(items[currentLoc].name + " "+ "Taken.");
+	   	}
+	}			   
+				
 		  //
           // Function to check an error in direction.  Ie: a wall has been reached
           // ========================================================================
@@ -455,89 +357,10 @@
             }            
          }
 
-            //
-            // Function to check the score to decide if 5 needs to be added.
-            // =============================================================
-            // Do the calculation and update the score variable if needed.
-            // It checks to see if the user has been to the location already.  
-            // if so, then they do not get more points.
-            // Total possible score = 35 {7*5} - If you start at 0 and then make your way back to 0 
-            // 10-14-16 - Solution - N,W,S,E,N,N == 0,1,3,5,4,2,6
-            //                to hit all 6 locations from 0
-            //
-              function scoreEval() {
-                  if (! beenHere0) {
-                      if (currentLoc === 0) {
-                        score = score + 5;
-                        beenHere0 = true; 					
-              } 
-                 else if ((! beenHere1) && (currentLoc === 1 )) {
-                      score = score + 5;
-                      beenHere1 = true;
-			  }
-                 else if ((! beenHere2) && (currentLoc === 2 )) {
-                      score = score + 5;
-                      beenHere2 = true;
-			  }
-                 else if ((! beenHere3) && (currentLoc === 3 )) {
-                      score = score + 5;
-                      beenHere3 = true;			
-             }
-                 else if ((! beenHere4) && (currentLoc === 4 )) {
-                      score = score + 5;
-                      beenHere4 = true;			
-             }
-                 else if ((! beenHere5) && (currentLoc === 5 )) {
-                      score = score + 5;
-                      beenHere5 = true;			
-             }
-                 else if ((! beenHere6) && (currentLoc === 6 )) {
-                      score = score + 5;					  
-                      beenHere6 = true;						  
-             }   
-			     else if ((! beenHere7) && (currentLoc === 7 )) {
-			          score = score + 5;
-					  beenHere7 = true;
-	         }   
-			     else if ((! beenHere8) && (currentLoc === 8 )) {
-			          score = score + 5;
-					  beenHere8 = true;
-             }   
-			    else if ((! beenHere9) && (currentLoc === 9 )) {
-			          score = score + 5;
-					  beenHere9 = true;
-             }   
-			    else if ((! beenHere10) && (currentLoc === 10 )) {
-			          score = score + 5;
-					  beenHere10 = true;
-			  }
-			 }
-			}
-
-			// 
-			// Function for the take command and ties to btnINV function for showing what player has picked up
-			//
-			 function btnTake() {
-              if ((currentLoc == 4) && (womenTaken == false )) {
-                      displayMessage ("The Women agrees to come with you.");
-					  womenTaken = true;					  
-			  }
-                 else if ((currentLoc == 5) && (keyTaken == false )) {
-                      displayMessage(" You put the key in your pocket.");
-                      keyTaken = true;
-			  }
-                 else if ((currentLoc == 9) && (peanutTaken == false )) {
-                      displayMessage("You pick up the Peanut Butter Sandwich.");
-                      peanutTaken = true;	
-              } else displayMessage ("There is nothing to take here.");
-   			}
-
-      	
          //
          // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
          //
           function displayMessage(msg) {
             var target = document.getElementById("taMain");
-            target.value = msg + "\n\n\n" + target.value ;
-         } 
+            target.value = msg + "\n\n\n" + target.value ;  } 
