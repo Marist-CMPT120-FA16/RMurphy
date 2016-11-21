@@ -344,7 +344,7 @@ var validMoves = [
 	
     function btnTake(item) {
 	   inventory.push(items[currentLoc].name);
-		displayMessage(items[currentLoc].name + "Taken.");
+		displayMessage(items[currentLoc].name + " "+ "Taken.");
         items[currentLoc].isTaken =true;
 	}
 	/* var loc = locations[currentLoc];
