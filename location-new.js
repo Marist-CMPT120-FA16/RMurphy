@@ -24,10 +24,7 @@
 		 var keyTaken = false;
 		 var womenTaken = false;
 		 var peanutTaken = false;
-		 var north = 0;
-		 var south = 1;
-		 var east =2;
-		 var west = 3;
+		 
 		 	 
                   
          
@@ -105,19 +102,11 @@ function Location(id, name, desc, descAfter, hasItem){
 		 this.hasItem;
 		 this.validMoves;
 		 this.visited = false;
-		 //this.item = function() {
-		//	 if (this.hasItem && locations[nextLocation]) {
-		//		 return items[nextLocation].desc;
-		//	 } else {
-		//		 return "";
-		//		 }
-		//	 }
-		this.toString=function() {
-		//	 var returnVal = "";
-		//	 returnVal=this.desc + " " + this.item();
-		return "id:" + this.id + "Location: " + this.name;};
-		//	 }
+		 function toString(){
+		return desc;
 		 }
+		//return ("id:" + this.id + "Location: " + this.name)};
+		}
 // Location instances		 
 var frontDr_loc = new Location(0,
                            "Front Door", 
@@ -156,10 +145,10 @@ var dante_loc = new Location(6,
 						 false);
 var greenRoom_loc = new Location(7,
                              "Room with green walls",
-                            "You enter a green room with what looks like red blood on the walls. You hear a far off sound. "
-							+ "It almost sounds like people screaming for help.",
-							"You enter a green room with what looks like red blood on the walls. You hear a far off sound. " 
-							+ "	It almost sounds like people screaming for help.",
+                            "You enter a green room with what looks like red blood on the walls. You hear a far off sound. ",
+							//+ "It almost sounds like people screaming for help.",
+							"You enter a green room with what looks like red blood on the walls. You hear a far off sound. " ,
+							//+ "	It almost sounds like people screaming for help.",
 							false);
 var pentagramRm_loc = new Location(8, 
                                "Pentagram Room",
@@ -191,26 +180,10 @@ function Item(id, name, desc,isTaken, origLoc) {
       }
 		
 // item instances
-var women = new Item (4,
-                     "Women Crying",
-					 " There is a women crying in the corner",
-					 false,
-					 4);
-var key = new Item(5, 
-                   "Old Key",
-				   "Rusty Old Key for some lock", 
-				   false,
-				   5);
-var peanut = new Item(9, 
-                      "Sandwich",
-					  "A Gooey, Yummy Peanut Butter and Jelly Sandwich",
-					  false,
-					  9);
-var book = new Item(8, 
-                    "Prayer Book", 
-					"The Book looks like something a priest would use, but the cross is upside down.",
-					false,
-					8);
+var women = new Item (4, "Women Crying", " There is a women crying in the corner", false,4);
+var key = new Item(5, "Old Key", "Rusty Old Key for some lock", false,5);
+var peanut = new Item(9, "Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich", false,9);
+var book = new Item(8, "Prayer Book", "The Book looks like something a priest would use, but the cross is upside down.",false,8);
 var items = [women, key,peanut,book];
 					
 function Inventory (id, name, desc){
@@ -219,7 +192,7 @@ function Inventory (id, name, desc){
 			 this.desc=desc;
 			 }
 
-var inventory = new Array();
+var inventory = [""];
 
     function btnInv() {
 			 var message = "Your Inventory List: \n";
@@ -230,9 +203,10 @@ var inventory = new Array();
 			}
 	}
 				
-//var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
+var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
 				
-var validMoves = [ /* N S E W  */
+var validMoves = [
+                   // N S E W 
   /*Location[0] */   [1,0,0,0],
    /*Location[1] */	 [1,0,5,3],
   /*Location[2] */   [6,4,3,10],
@@ -243,40 +217,31 @@ var validMoves = [ /* N S E W  */
   /*Location[7] */	 [7,7,7,4],
   /*Location[8] */	 [5,8,8,8],
   /*Location[9] */	 [4,9,9,9],
-  /*Location[10]*/	 [10,10,2,10],
-	    	];
-//
+  /*Location[10]*/	 [10,10,2,10]
+	        	];
+
    function btnGo_North_click() {
-         currentLoc = validMoves[currentlLoc][0]];
+         currentLoc = validMoves[currentLoc][0];
     	 look();
-		 else{
-			 directionError();
-		    }
+		// else{
+		//	 directionError();
+		//    }
 		 }
 
    function btnGo_South_click() {
-        currentLoc = validMoves[currentLoc][1]];
+        currentLoc = validMoves[currentLoc][1];
 		 look();
-         else {
-			 directionError();
-	       }
-	    } 
+         } 
 	
 	function btnGo_East_click() {
-        currentLoc = validMoves[currentLoc][2]];
+        currentLoc = validMoves[currentLoc][2];
 		 look();
-	         else {
-               directionError(); 
-	        }
-    	}
-	
+	      }
+    		
 	function btnGo_West_click() {
-        currentLoc = validMoves[currentLoc][3]];
+        currentLoc = validMoves[currentLoc][3];
 		 look();
-	    else {
-		    directionError();
-	        } 
-        }		
+	     }		
 	
 
 
@@ -288,9 +253,9 @@ var validMoves = [ /* N S E W  */
 	   // Also will disable buttons that can not be used
        //
          function look() {
-            var loc=location[currentLoc];
+            var loc = location[currentLoc];
 			var desc = loc.name + ": " + loc.desc + "\n";
-            if loc.visited === false){
+            if (loc.visited === false){
 				score=score + 5;
 				loc.visited=true;
 			}
@@ -301,20 +266,17 @@ var validMoves = [ /* N S E W  */
 			
 			if (loc.id === validMoves[currentLoc[0]]){
 				document.getElementById("btnGo_N").disabled = true;
-			}
-			
+			} 
 			if (loc.id === validMoves[currentLoc[1]]){
 				document.getElementById("btnGo_S").disabled = true;
 			}
-			
 			if (loc.id === validMoves[currentLoc[2]]){
 				document.getElementById("btnGo_E").disabled = true;
 			}
-			
 			if (loc.id === validMoves[currentLoc[3]]){
 				document.getElementById("btnGo_W").disabled = true;
 			}
-			displayMessage(desc + "Your Score is: " + score +"\n")
+			displayMessage(desc + "Your Score is: " + score +"\n");
 		 }
 		 
 
@@ -385,7 +347,7 @@ var validMoves = [ /* N S E W  */
             // 10-14-16 - Solution - N,W,S,E,N,N == 0,1,3,5,4,2,6
             //                to hit all 6 locations from 0
             //
-              function scoreEval() {
+/*              function scoreEval() {
                   if (! beenHere0) {
                       if (currentLoc === 0) {
                         score = score + 5;
@@ -433,7 +395,7 @@ var validMoves = [ /* N S E W  */
 			  }
 			 }
 			}
-
+ */
 //
          // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
