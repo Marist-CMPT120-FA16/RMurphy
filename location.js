@@ -269,6 +269,9 @@ var validMoves = [
 
    function btnGo_North_click() {
          currentLoc = validMoves[currentLoc][0];
+		// if validMoves[currentLoc][0] === location[currentLoc]{
+		//displayMessage("you can not go that way");	 
+		 //}
     	 look();
 		 }
 
