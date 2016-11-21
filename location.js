@@ -156,7 +156,7 @@ pool_loc.hasItem= true;
 var dirtRoom_loc = new Location();
 dirtRoom_loc.id=5;
 dirtRoom_loc.name="Dirt Room";
-dirtRoom_loc.desc="You enter a room with a dirt floor and a table. On the table is an odd key.";
+dirtRoom_loc.desc="You enter a room with a dirt floor and a table. On the table is a rusty old key for some kind of lock.";
 dirtRoom_loc.descAfter="You enter a room with a dirt floor and a table.";
 dirtRoom_loc.item=key;
 dirtRoom_loc.hasItem= true;
@@ -183,7 +183,7 @@ greenRoom_loc.hasItem=false;
 var pentagramRm_loc = new Location();
 pentagramRm_loc.id=8;
 pentagramRm_loc.name="Pentagram Room";
-pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.";
+pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.  The Book looks like something a priest would use, but the cross is upside down.";
 pentagramRm_loc.descAfter="You enter a room with a pentagram on the floor. The chanting has stopped.";
 pentagramRm_loc.item=book;
 pentagramRm_loc.hasItem= true;
@@ -192,8 +192,8 @@ pentagramRm_loc.hasItem= true;
 var dampRoom_loc = new Location();
 dampRoom_loc.id=9;
 dampRoom_loc.name="Dark Damp Room";
-dampRoom_loc.desc="You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you find a sandwich.";
-dampRoom_loc.descAfter="You enter a cold, damp room.";
+dampRoom_loc.desc="You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you see a sandwich. A Gooey, Yummy Peanut Butter and Jelly Sandwich";
+dampRoom_loc.descAfter="You enter a cold, damp room. ";
 dampRoom_loc.item=peanut;
 dampRoom_loc.hasItem=true;
 
@@ -224,10 +224,10 @@ function Item(id, name, desc,isTaken, origLoc) {
       }
 		
 // item instances
-var women = new Item (4, "Women Crying", " There is a women crying in the corner", false,4);
-var key = new Item(5, "Old Key", "Rusty Old Key for some lock", false,5);
-var book = new Item(8, "Prayer Book", "The Book looks like something a priest would use, but the cross is upside down.",false,8);
-var peanut = new Item(9, "Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich", false,9);
+var women = new Item (4, " A Crying Women", " There is a women crying in the corner", false,4);
+var key = new Item(5, " Old Rusty Key", "Rusty Old Key for some lock", false,5);
+var book = new Item(8, " Prayer Book", "The Book looks like something a priest would use, but the cross is upside down.",false,8);
+var peanut = new Item(9, " PB & J Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich", false,9);
 
 
 var items = new Array ();
