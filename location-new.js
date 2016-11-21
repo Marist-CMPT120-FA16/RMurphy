@@ -100,7 +100,7 @@
 		 this.desc=desc;
 		 this.descAfter=descAfter;
 		 this.item=item;
-		 this.hasItem;
+		 this.hasItem=hasItem;
 		 this.validMoves;
 		 this.visited = false;
 		 function toString(){
@@ -343,9 +343,16 @@ var validMoves = [
 
 	
     function btnTake(item) {
+	   var loc = locations[currentLoc];
+	   if (loc.hasItem === false){
+	   displayMessage("There is nothing to take here");
+	   } else if (loc.hasItem === true){
 	   inventory.push(items[currentLoc].name);
+		items[currentLoc].isTaken = true;
+		loc.hasItem = false;
+		loc.desc=loc.descAfter
 		displayMessage(items[currentLoc].name + " "+ "Taken.");
-        items[currentLoc].isTaken =true;
+	   	}
 	}
 	/* var loc = locations[currentLoc];
 			//var item = items[currentLoc];
