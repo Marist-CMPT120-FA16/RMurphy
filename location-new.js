@@ -28,7 +28,7 @@
 		 	 
                   
          
-//
+         //
          // Command Button handler for input by user.
          //=======================================================================
          // 1) trim off extra spaces
@@ -65,7 +65,7 @@
 						  }    else if (command == "t") {
 							     btnTake();
 					       }    else displayMessage("Please try again." +"\n" + "Type 'help' for valid commands." 
-                                     + "\n" + " or press a button below")
+                                     + "\n" + " or press a button below");
 		                }
 //
 		 // Set up Help and inventory Button actions
@@ -84,90 +84,132 @@
 //
          // Initialization function for executing whne page (re)loads
          //
-         function init() {
-		     desc = "You are standing in front of a yellow house";
-             displayMessage(desc);
-			 document.getElementById("btnGo_S").disabled = true;
-			 document.getElementById("btnGo_W").disabled = true;
-			 document.getElementById("btnGo_E").disabled = true;
-			 document.getElementById("btnGo_N").disabled = false;
-         }
+     function init() {
+	   desc = "You are standing in front of a yellow house";
+       displayMessage(desc);
+	   document.getElementById("btnGo_S").disabled = true;
+	   document.getElementById("btnGo_W").disabled = true;
+	   document.getElementById("btnGo_E").disabled = true;
+	   document.getElementById("btnGo_N").disabled = false;
+       }
 
 //Location Prototype
-function Location(id, name, desc, descAfter, hasItem){
+   function Location(id, name, desc, descAfter, item,hasItem){
          this.id=id;
 		 this.name=name;
 		 this.desc=desc;
-		 this.descAfter;
+		 this.descAfter=descAfter;
+		 this.item=item;
 		 this.hasItem;
 		 this.validMoves;
 		 this.visited = false;
 		 function toString(){
-		return desc;
+		   return desc;
 		 }
 		//return ("id:" + this.id + "Location: " + this.name)};
 		}
-// Location instances		 
-var frontDr_loc = new Location(0,
-                           "Front Door", 
-						   "You are standing in front of a yellow house",
-						   "You are standing in front of a yellow house",
-						   false);
-var kitchen_loc = new Location(1,
-                            "Kitchen",
-							"You walk through the door and see a kitchen",
-							"You walk through the door and see a kitchen",
-							false);
-var tunnel_loc = new Location(2,
-                          "Tunnel",
-						  "You have entered a very long tunnel",
-						  "You have entered a very long tunnel",
-						  false);
-var roomDoor_loc = new Location(3,
-                            "Room with a Door",
-                            "You enter a room with a door.",
-							"You enter a room with a door.",
-							false);
-var pool_loc = new Location(4,  
-                        " Pool ",
-                        "You enter a room with a crystal clear pool. In the corner is a women crying.",
-						"You enter a room with a crystal clear pool.",
-						true);
-var dirtRoom_loc = new Location(5, 
-                            "Dirt Room",
-                            "You enter a room with a dirt floor and a table. On the table is an odd key.",
-							"You enter a room with a dirt floor and a table.",
-							true);
-var dante_loc = new Location(6,
-                         "Dante's Cave",
-                         "You enter a cave with water dripping from the ceiling.",
-						 "You enter a cave with water dripping from the ceiling.",
-						 false);
-var greenRoom_loc = new Location(7,
-                             "Room with green walls",
-                            "You enter a green room with what looks like red blood on the walls. You hear a far off sound. ",
-							//+ "It almost sounds like people screaming for help.",
-							"You enter a green room with what looks like red blood on the walls. You hear a far off sound. " ,
-							//+ "	It almost sounds like people screaming for help.",
-							false);
-var pentagramRm_loc = new Location(8, 
-                               "Pentagram Room",
-                               "You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.",
-							   "You enter a room with a pentagram on the floor. The chanting has stopped.",
-							   true);
-var dampRoom_loc = new Location(9, 
-                            "Dark Damp Room",
-							"You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you find a sandwich.",
-                            "You enter a cold, damp room.",
-							true);
-var deadEnd_loc = new Location(10,
-                           "Dead End",
-                            "You enter a cave that seems to have no exits.",
-							"You enter a cave that seems to have no exits",
-							false);
-var locations = [frontDr_loc, kitchen_loc, tunnel_loc, roomDoor_loc, 
-                 pool_loc, dirtRoom_loc, dante_loc, greenRoom_loc, 
-				 pentagramRm_loc, dampRoom_loc, deadEnd_loc];
+// Location instances
+//location 0		 
+var frontDr_loc = new Location();
+frontDr_loc.id=0;
+frontDr_loc.name="Front Door";
+frontDr_loc.desc="You are standing in front of a yellow house";
+frontDr_loc.descAfter= "You are standing in front of a yellow house";
+frontDr_loc.item ="";
+frontDr_loc.hasItem=false;
+
+//location 1
+var kitchen_loc = new Location();
+kitchen_loc.id=1;
+kitchen_loc.name= "Kitchen";
+kitchen_loc.desc="You walk through the door and see a kitchen";
+kitchen_loc.descAfter="You walk through the door and see a kitchen";
+kitchen_loc.item="";
+kitchen_loc.hasItem= false;
+
+//location 2
+var tunnel_loc = new Location();
+tunnel_loc.id=2;
+tunnel_loc.name ="Tunnel";
+tunnel_loc.desc ="You have entered a very long tunnel";
+tunnel_loc.descAfter= "You have entered a very long tunnel";
+tunnel_loc.item= "";
+tunnel_loc.hasItem=false;
+
+//location 3
+var roomDoor_loc = new Location();
+roomDoor_loc.id=3;
+roomDoor_loc.name= "Room with a Door"
+roomDoor_loc.desc= "You enter a room with a door.";
+roomDoor_loc.descAfter="You enter a room with a door.";
+roomDoor_loc.item="";
+roomDoor_loc.hasItem=false;
+
+//location 4
+var pool_loc = new Location();
+pool_loc.id=4;
+pool_loc.name=" Pool ";
+pool_loc.desc="You enter a room with a crystal clear pool. In the corner is a women crying.";
+pool_loc.descAfter="You enter a room with a crystal clear pool.";
+pool_loc.item=women;
+pool_loc.hasItem= true;
+
+//location 5
+var dirtRoom_loc = new Location();
+dirtRoom_loc.id=5;
+dirtRoom_loc.name="Dirt Room";
+dirtRoom_loc.desc="You enter a room with a dirt floor and a table. On the table is an odd key.";
+dirtRoom_loc.descAfter="You enter a room with a dirt floor and a table.";
+dirtRoom_loc.item=key;
+dirtRoom_loc.hasItem= true;
+
+//location6
+var dante_loc = new Location();
+dante_loc.id=6;
+dante_loc.name= "Dante's Cave";
+dante_loc.desc="You enter a cave with water dripping from the ceiling.";
+dante_loc.descAfter="You enter a cave with water dripping from the ceiling.";
+dante_loc.item="";
+dante_loc.hasItem=false;
+
+//location 7
+var greenRoom_loc = new Location();
+greenRoom_loc.id=7;
+greenRoom_loc.name="Room with green walls";
+ greenRoom_loc.desc="You enter a green room with what looks like red blood on the walls. You hear a far off sound. It almost sounds like people screaming for help.";
+ greenRoom_loc.descAfter="You enter a green room with what looks like red blood on the walls. You hear a far off sound. It almost sounds like people screaming for help.";
+greenRoom_loc.item="";
+greenRoom_loc.hasItem=false;
+
+//location 8
+var pentagramRm_loc = new Location();
+pentagramRm_loc.id=8;
+pentagramRm_loc.name="Pentagram Room";
+pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.";
+pentagramRm_loc.descAfter="You enter a room with a pentagram on the floor. The chanting has stopped.";
+pentagramRm_loc.item=book;
+pentagramRm_loc.hasItem= true;
+
+//location 9
+var dampRoom_loc = new Location();
+dampRoom_loc.id=9;
+dampRoom_loc.name="Dark Damp Room";
+dampRoom_loc.desc="You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you find a sandwich.";
+dampRoom_loc.descAfter="You enter a cold, damp room.";
+dampRoom_loc.item=peanut;
+dampRoom_loc.hasItem=true;
+
+//location 10
+var deadEnd_loc = new Location();
+deadEnd_loc.id=10;
+deadEnd_loc.name="Dead End";
+deadEnd_loc.desc="You enter a cave that seems to have no exits.";
+deadEnd_loc.descAfter="You enter a cave that seems to have no exits";
+deadEnd_loc.item="";
+deadEnd_loc.hasItem= false;
+
+var locations = [frontDr_loc, kitchen_loc, tunnel_loc, roomDoor_loc, pool_loc, dirtRoom_loc, dante_loc, greenRoom_loc, 
+                 pentagramRm_loc, dampRoom_loc, deadEnd_loc];
 							
 // item prototype
 
@@ -175,35 +217,49 @@ function Item(id, name, desc,isTaken, origLoc) {
          this.id=id;
 		 this.name=name;
 		 this.desc=desc;
-		 this.isTaken= isTaken;
+		 this.isTaken = isTaken;
 		 this.origLoc;
+		 function toString(){
+		   return desc;
+		 }
       }
 		
 // item instances
 var women = new Item (4, "Women Crying", " There is a women crying in the corner", false,4);
 var key = new Item(5, "Old Key", "Rusty Old Key for some lock", false,5);
-var peanut = new Item(9, "Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich", false,9);
 var book = new Item(8, "Prayer Book", "The Book looks like something a priest would use, but the cross is upside down.",false,8);
-var items = [women, key,peanut,book];
+var peanut = new Item(9, "Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich", false,9);
+
+
+var items = new Array ();
+items[4] = women;
+items[5] = key;
+items[8] = book;
+items[9] = peanut
+
 					
-function Inventory (id, name, desc){
-             this.id;
-			 this.name=name;
-			 this.desc=desc;
-			 }
+var inventory = new Array();
 
-var inventory = [""];
+//var inventory = [null,null,null,null,null,null,null,null,null,null,null];
 
-    function btnInv() {
+//function btn_displayInventory() {
+  function btnInv(){
+	  var msg = "Inventory: " + inventory;
+      displayMessage(msg);
+  }
+/*           function btnInv(){
 			 var message = "Your Inventory List: \n";
-			 for ( var i=0; i< Inventory.length-1; i++){
-			 if (inventory[i] !=null) {
-			    displayMessage(Inventory[i].name + ": " + Inventory[i].desc + "\n");
+			 for (var i = 0; i < inventory.length; i++){
+			// if (inventory[i] != null) {
+			    message = message + inventory[i].name + ": " + inventory[i].desc + "\n");
 				}
 			}
+			  displayMessage(message);
 	}
-				
-var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
+		*/	
+		
+
+//var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
 				
 var validMoves = [
                    // N S E W 
@@ -223,9 +279,6 @@ var validMoves = [
    function btnGo_North_click() {
          currentLoc = validMoves[currentLoc][0];
     	 look();
-		// else{
-		//	 directionError();
-		//    }
 		 }
 
    function btnGo_South_click() {
@@ -245,7 +298,6 @@ var validMoves = [
 	
 
 
-// 
        // Set up of locations that will be displayed for the user.
        //=========================================================
        // function look is the coordinator of when a location function will be called.
@@ -279,45 +331,64 @@ var validMoves = [
 			displayMessage(desc + "Your Score is: " + score +"\n");
 		 }
 		 
-
+       
 // function for the take button
 // puts items into inventory, notify user and updates the location description
-		
-    function btnTake() {
-	        // var loc = locations[currentLoc];
-			 if (item[i].isTaken == true || Location[i].hasItem == false){
-			    displayMessage("There is nothing to take");
-				} else if ((Location.id === 4) && (item[4].isTaken === false )) {
+	
+	//function pickUpItem(item) {
+    //inventory.push(items[currentLocation].name);
+    //updateDisplay("Taken " + items[currentLocation].name + ".");
+    //items[currentLocation].isTaken = true;
+
+
+	
+    function btnTake(item) {
+	   inventory.push(items[currentLoc].name);
+		displayMessage(items[currentLoc].name + "Taken.");
+        items[currentLoc].isTaken =true;
+	}
+	/* var loc = locations[currentLoc];
+			//var item = items[currentLoc];
+			 if (loc.item == null){
+			 //if (item.isTaken === true || loc.item === false){
+			    displayMessage("There is nothing to take here");
+				} 
+				else {
+					var item = loc.item;
+					inventory[item.id]=item;
+					loc.item = null;
+					loc.desc = loc.descAfter;
+					displayMessage(item.name + "added to your inventory:")
+				}
+		/*		else if ((loc.id === 4) && (item[4].isTaken === false )) {
                    displayMessage ("The Women agrees to come with you.");
 				   displayMessage(item[4].name + "Added to your inventory:" + " ");
 			       inventory.push(item[4].name);
 				   item[4].isTaken=true;
-				   Location[4].desc=Location[4].descAfter;
+				   loc[4].desc=loc[4].descAfter;
 				} 
-				   else if ((Location.id === 5) && (item[5].isTaken === false )) {
+				   else if ((loc.id === 5) && (item[5].isTaken === false )) {
 				       displayMessage(" You put the key in your pocket.");
 					   displayMessage(item[5].name + "Added to your inventory:" + " ");
 					   inventory.push(item[5].name);
 					   item[5].isTaken=true;
-				       Location[5].desc=Location[5].descAfter;
+				       loc[5].desc=loc[5].descAfter;
 				} 
-					 else if ((Location.id === 9) && (item[9].isTaken === false )) {
+					 else if ((loc.id === 9) && (item[9].isTaken === false )) {
                       displayMessage("You pick up the Peanut Butter Sandwich.");
 					  displayMessage(item[9].name + "Added to your inventory:" +  " ");
                       Inventory.push(item[9].name);
 					  item[9].isTaken=true;
-					  Location[9].desc=Location[9].descAfter;
+					  loc[9].desc=loc[9].descAfter;
 				}	  
-					  else if ((Location.id === 8) && (item[8].isTaken === false )) {
+					  else if ((loc.id === 8) && (item[8].isTaken === false )) {
                       displayMessage("You pick up " + item[8].name );
 					  displayMessage(item[8].name + "Added to your inventory:" + " ");
                       Inventory.push(item[8].name);
 					  item[8].isTaken=true;
-					  Location[8].desc=Location[8].descAfter;
-              } else {
-				      displayMessage ("There is nothing to take here.");
-			 }
-	       }
+					  loc[8].desc=loc[8].descAfter;
+              } 
+	       } */
 				   
 				
 		  //
@@ -337,66 +408,7 @@ var validMoves = [
             }            
          }
 
-            //
-            // Function to check the score to decide if 5 needs to be added.
-            // =============================================================
-            // Do the calculation and update the score variable if needed.
-            // It checks to see if the user has been to the location already.  
-            // if so, then they do not get more points.
-            // Total possible score = 35 {7*5} - If you start at 0 and then make your way back to 0 
-            // 10-14-16 - Solution - N,W,S,E,N,N == 0,1,3,5,4,2,6
-            //                to hit all 6 locations from 0
-            //
-/*              function scoreEval() {
-                  if (! beenHere0) {
-                      if (currentLoc === 0) {
-                        score = score + 5;
-                        beenHere0 = true; 					
-              } 
-                 else if ((! beenHere1) && (currentLoc === 1 )) {
-                      score = score + 5;
-                      beenHere1 = true;
-			  }
-                 else if ((! beenHere2) && (currentLoc === 2 )) {
-                      score = score + 5;
-                      beenHere2 = true;
-			  }
-                 else if ((! beenHere3) && (currentLoc === 3 )) {
-                      score = score + 5;
-                      beenHere3 = true;			
-             }
-                 else if ((! beenHere4) && (currentLoc === 4 )) {
-                      score = score + 5;
-                      beenHere4 = true;			
-             }
-                 else if ((! beenHere5) && (currentLoc === 5 )) {
-                      score = score + 5;
-                      beenHere5 = true;			
-             }
-                 else if ((! beenHere6) && (currentLoc === 6 )) {
-                      score = score + 5;					  
-                      beenHere6 = true;						  
-             }   
-			     else if ((! beenHere7) && (currentLoc === 7 )) {
-			          score = score + 5;
-					  beenHere7 = true;
-	         }   
-			     else if ((! beenHere8) && (currentLoc === 8 )) {
-			          score = score + 5;
-					  beenHere8 = true;
-             }   
-			    else if ((! beenHere9) && (currentLoc === 9 )) {
-			          score = score + 5;
-					  beenHere9 = true;
-             }   
-			    else if ((! beenHere10) && (currentLoc === 10 )) {
-			          score = score + 5;
-					  beenHere10 = true;
-			  }
-			 }
-			}
- */
-//
+         //
          // Function for displying the message correctly (location and score) as we iterate through the game
          // also include the value of the score.
          //
