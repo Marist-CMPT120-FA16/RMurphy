@@ -290,7 +290,44 @@ var validMoves = [
 		 look();
 	     }		
 	
-
+	// Logic for disabling the buttons- use next time
+	// array is made to show what buttons should be enabled or not (0 or 1)
+	//var navButtons = new Array("btnNorth", "btnSouth",
+    //                          "btnWest", "btnEast");
+    //                          
+	//the array of dynamic navigation buttons                    
+	//var navButtons_switch = new Array(/*     0   1   2   3 */
+    //                                /*0*/  [0,  0,  0,  0],
+    //                                /*1*/  [1,  0,  1,  1],
+    //                                /*2*/  [1,  1,  0,  0],
+    //                                /*3*/  [0,  0,  1,  1],
+     //                               /*4*/  [0,  1,  1,  0],
+      //                              /*5*/  [0,  1,  1,  1],
+       //                             /*6*/  [1,  1,  0,  1],
+        //                            /*7*/  [1,  0,  0,  0],
+         //                           /*8*/  [1,  1,  0,  0],
+          //                          /*9*/  [0,  0,  0,  0],
+           //                         /*10*/ [0,  1,  1,  1],
+            //                        /*11*/ [1,  1,  0,  1],
+             //                       /*12*/ [1,  1,  1,  1]
+              //                      );
+	// then this is part of the code needed.
+	//controls the dynamic button disabling
+	//
+	//      for (var i = 0; i < navButtons.length; i++) {
+	//        var btnDisable = 0;
+	//        btnDisable = navButtons_switch[currentLocation][i];
+	//        if (btnDisable === 1) {
+	//          document.getElementById(navButtons[i]).disabled = true;
+	//       } else {
+	//            document.getElementById(navButtons[i]).disabled = false;
+	//          }
+	 //     }
+    // }
+    // else if (nextLocation === -1) {
+     // updateDisplay("You can't go this way.");
+   // }
+		  
 
        // Set up of locations that will be displayed for the user.
        //=========================================================
