@@ -24,8 +24,10 @@
 
           
 
-      <!-- Start the programming for the game -->
+      <!-- Start loading in javascript files for the game -->
+	    <script type="text/javascript" src="gameplay.js"></script>
         <script type="text/javascript" src="location.js"></script>
+		<script type="text/javascript" src="navigate.js"></script>
     </head>
       <!-- Set text area box size, background, text formatting and a starting location for the user -->
     <body onload="init();">
@@ -33,7 +35,7 @@
 	      <h3> <a href= mailto:ruth.murphy1@marist.edu> Problem? Click here to send errors to Ruth Murphy</a></h3>
 		  
        <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
-               rows="10"
+               rows="12"
                cols="70"
                id="taMain"
                name="taMain"> Pick a direction to explore.
@@ -88,7 +90,6 @@
               value="Help"
               onclick="btnHelp();">
 			  
-		<p><strong> Map</strong></p>
-		<img src="Map.gif" width="718" height="551" alt="Game Map"/>
-  </body>
+		<p>	<strong> Are You Stuck? The <a href="Map.gif" target="_blank">Map</a> will open in a new window for you.</strong></p></a>
+	 </body>
 </html>
