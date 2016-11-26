@@ -76,7 +76,9 @@
 						+ "\n\n" + "Valid commands are 'Take','Invent' or 'Help'."
 						+ "\n\n" + "Press the 'Inventory' button to see the contents of your bag."
 						+ "\n" + "Press the 'Take' button to pick up items."
-						+ "\n" + "Press the 'Help' button to see this message.");
+						+ "\n" + "Press the 'Help' button to see this message."
+						+ "\n\n" + "Objectives: " + "1) Rescue the Women; " + "2) Get the Key; "
+						+ "3) Find the book; " + "4) Keep up your strength");
 		            }
          //
          // Initialization function for executing when page (re)loads
