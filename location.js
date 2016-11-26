@@ -1,7 +1,7 @@
 //project 5 adding objects and arrays
 // location-new.js 
-// Ruth Murphy
-// prep for update to loction.js
+// Ruth Murphy - CMPT 120 Fall 2016
+// Final Project Location file
 
     //
     // List of Global Variables for Game
@@ -82,7 +82,8 @@
          // Initialization function for executing when page (re)loads
          //
      function init() {
-	   desc = "You are standing in front of a yellow house";
+	   desc = "You are standing in front of a yellow house" + "\n" + "\n" + "Your objectives are: " +"\n" + "1) Rescue the Women" 
+	   + "\n" + "2) Get the Key" + "\n" + "3) Find the book" +"\n" + "4) Keep up your strength" ;
        displayMessage(desc);
 	   document.getElementById("btnGo_S").disabled = true;
 	   document.getElementById("btnGo_W").disabled = true;
