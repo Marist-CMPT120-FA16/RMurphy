@@ -118,6 +118,7 @@
 	frontDr_loc.descAfter= "You are standing in front of a yellow house";
 	frontDr_loc.item ="";
 	frontDr_loc.hasItem=false;
+	frontDr_loc.visted = false;
 
 	//location 1
 var kitchen_loc = new Location();
@@ -127,6 +128,7 @@ kitchen_loc.desc="You walk through the door and see a kitchen";
 kitchen_loc.descAfter="You walk through the door and see a kitchen";
 kitchen_loc.item="";
 kitchen_loc.hasItem= false;
+kitchen_loc.visted = false;
 
 	//location 2
 var tunnel_loc = new Location();
@@ -136,6 +138,7 @@ tunnel_loc.desc ="You have entered a very long tunnel";
 tunnel_loc.descAfter= "You have entered a very long tunnel";
 tunnel_loc.item= "";
 tunnel_loc.hasItem=false;
+tunnel_loc.visted = false;
 
 	//location 3
 var roomDoor_loc = new Location();
@@ -145,6 +148,7 @@ roomDoor_loc.desc= "You enter a room with a door.";
 roomDoor_loc.descAfter="You enter a room with a door.";
 roomDoor_loc.item="";
 roomDoor_loc.hasItem=false;
+roomDoor_loc.visted = false;
 
 	//location 4
 var pool_loc = new Location();
@@ -154,6 +158,7 @@ pool_loc.desc="You enter a room with a crystal clear pool. In the corner is a wo
 pool_loc.descAfter="You enter a room with a crystal clear pool.";
 pool_loc.item=women;
 pool_loc.hasItem= true;
+pool_loc.visted = false;
 
 	//location 5
 var dirtRoom_loc = new Location();
@@ -163,6 +168,7 @@ dirtRoom_loc.desc="You enter a room with a dirt floor and a table. On the table 
 dirtRoom_loc.descAfter="You enter a room with a dirt floor and a table.";
 dirtRoom_loc.item=key;
 dirtRoom_loc.hasItem= true;
+dirtRoom_loc.visted = false;
 
 	//location6
 var dante_loc = new Location();
@@ -172,6 +178,7 @@ dante_loc.desc="You enter a cave with water dripping from the ceiling.";
 dante_loc.descAfter="You enter a cave with water dripping from the ceiling.";
 dante_loc.item="";
 dante_loc.hasItem=false;
+dante_loc.visted = false;
 
 	//location 7
 var greenRoom_loc = new Location();
@@ -181,6 +188,7 @@ greenRoom_loc.desc="You enter a green room with what looks like red blood on the
 greenRoom_loc.descAfter="You enter a green room with what looks like red blood on the walls. You hear a far off sound. It almost sounds like people screaming for help.";
 greenRoom_loc.item="";
 greenRoom_loc.hasItem=false;
+greenRoom_loc.visted = false;
 
 	//location 8
 var pentagramRm_loc = new Location();
@@ -190,6 +198,7 @@ pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor.
 pentagramRm_loc.descAfter="You enter a room with a pentagram on the floor. The chanting has stopped.";
 pentagramRm_loc.item=book;
 pentagramRm_loc.hasItem= true;
+pentagramRm_loc.visted = false;
 
 	//location 9
 var dampRoom_loc = new Location();
@@ -199,6 +208,7 @@ dampRoom_loc.desc="You enter a cold, damp room.  You smell Peanut Butter. On a s
 dampRoom_loc.descAfter="You enter a cold, damp room. ";
 dampRoom_loc.item=peanut;
 dampRoom_loc.hasItem=true;
+dampRoom_loc.visted = false;
 
 	//location 10
 var deadEnd_loc = new Location();
@@ -208,6 +218,7 @@ deadEnd_loc.desc="You enter a cave that seems to have no exits.";
 deadEnd_loc.descAfter="You enter a cave that seems to have no exits";
 deadEnd_loc.item="";
 deadEnd_loc.hasItem= false;
+feadEnd_loc.visted = false;
 	
 	// global Location Variables
 	var locations = [frontDr_loc, kitchen_loc, tunnel_loc, roomDoor_loc, pool_loc, dirtRoom_loc, dante_loc, greenRoom_loc, 
@@ -249,8 +260,6 @@ var inventory = new Array();
          displayMessage(msg);
          }
 		
-        // was not needed, but leaving for future use - button array
-        //          var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
 
 //
 // Array for the movement of the player.  This shows all of the valid moves allowed from each location.
@@ -293,41 +302,38 @@ var validMoves = [
 		 look();
 	     }		
 	
-	// Logic for disabling the buttons- use next time
-	// array is made to show what buttons should be enabled or not (0 or 1)
-	//var navButtons = new Array("btnNorth", "btnSouth",
-    //                          "btnWest", "btnEast");
-    //                          
-	//the array of dynamic navigation buttons                    
-	//var navButtons_switch = new Array(/*     0   1   2   3 */
-    //                                /*0*/  [0,  0,  0,  0],
-    //                                /*1*/  [1,  0,  1,  1],
-    //                                /*2*/  [1,  1,  0,  0],
-    //                                /*3*/  [0,  0,  1,  1],
-     //                               /*4*/  [0,  1,  1,  0],
-      //                              /*5*/  [0,  1,  1,  1],
-       //                             /*6*/  [1,  1,  0,  1],
-        //                            /*7*/  [1,  0,  0,  0],
-         //                           /*8*/  [1,  1,  0,  0],
-          //                          /*9*/  [0,  0,  0,  0],
-           //                         /*10*/ [0,  1,  1,  1],
-            //                        /*11*/ [1,  1,  0,  1],
-             //                       /*12*/ [1,  1,  1,  1]
-              //                      );
-	// then this is part of the code needed.
+        // Variable & Array for the navigation buttons.
+		// This will allow the buttons to be disabled as player moves through the game
+var navBtns = ["btnGo_N","btnGo_S","btnGo_E","btnGo_W" ];
+
+                       
+	//the array for the navigation buttons - on and off as player travels.
+	var navButtons_switch = new Array(/*    N   S   E   W */
+                                    /*0*/  [0,  1,  1,  1],
+                                    /*1*/  [1,  0,  0,  0],
+                                    /*2*/  [0,  0,  0,  0],
+                                    /*3*/  [1,  0,  0,  0],
+                                    /*4*/  [0,  0,  0,  0],
+                                    /*5*/  [0,  0,  0,  0],
+                                    /*6*/  [1,  0,  1,  1],
+                                    /*7*/  [1,  1,  1,  0],
+                                    /*8*/  [0,  1,  1,  1],
+                                    /*9*/  [0,  1,  1,  1],
+                                    /*10*/ [1,  1,  0,  1]
+                                         );
 	//controls the dynamic button disabling
 	//
-	//      for (var i = 0; i < navButtons.length; i++) {
-	//        var btnDisable = 0;
-	//        btnDisable = navButtons_switch[currentLocation][i];
-	//        if (btnDisable === 1) {
-	//          document.getElementById(navButtons[i]).disabled = true;
-	//       } else {
-	//            document.getElementById(navButtons[i]).disabled = false;
-	//          }
-	 //     }
+	      for (var i = 0; i < navBtns.length; i++) {
+	        var btnDisable = 0;
+	        btnDisable = navBtns_switch[currentLocation][i];
+	        if (btnDisable === 1) {
+	          document.getElementById(navBtns[i]).disabled = true;
+	       } else {
+	            document.getElementById(navBtns[i]).disabled = false;
+	          }
+	     }
     // }
-    // else if (nextLocation === -1) {
+ //    else if (nextLocation === -1) {
      // updateDisplay("You can't go this way.");
    // }
 		  
