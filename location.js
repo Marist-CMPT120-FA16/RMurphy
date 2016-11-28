@@ -5,7 +5,7 @@
 // Ruth Murphy - CMPT 120 Fall 2016
 // Final Project Location focused file
 // Control HTML file is "Final Project-Murphy.html"
-// Last Update: November 25, 2016
+// Last Update: November 28, 2016
 
     //
     // List of Global Variables for Game

@@ -5,12 +5,13 @@
 // Ruth Murphy - CMPT 120 Fall 2016
 // Final Project Navigation focused file
 // Control HTML file is "Final Project-Murphy.html"
-// Last Update: November 25, 2016
+// Last Update: November 28, 2016
 
    //
     // List of Global Variables for Game
     //         
          var currentLoc = 0;
+		 var nextLoc = 0;
          var score = 0;
          var directionErrorCount = 0;
          var limit = 5;
@@ -88,14 +89,22 @@
     function look() {
         var loc = locations[currentLoc];
 		var desc = loc.name + ": " + loc.desc + "\n";
-         if (loc.visited === false){
+          if (book.isTaken===false) {
+				displayMessage("You hear sinister whispering in your ear and you feel dizzy" );
+			} else {
+				displayMessage("You are glowing");
+			  } 
+		  if ((peanut.isTaken===false) && (loc.id >=2)){
+				  displayMessage("You are getting hungry")
+			  } 
+		  if (loc.visited === false){
 			score=score + 5;
 			loc.visited=true;
-			 }
-				for (var i = 0; i < navBtns.length; i++) {
-	              var btnDisable = 0;
-	                btnDisable = navButtons_switch[currentLoc][i];
-	              if (btnDisable === 1) {
+		      }
+			for (var i = 0; i < navBtns.length; i++) {
+	           var btnDisable = 0;
+	               btnDisable = navButtons_switch[currentLoc][i];
+	             if (btnDisable === 1) {
 	               document.getElementById(navBtns[i]).disabled = true;
 	             } else {
 	               document.getElementById(navBtns[i]).disabled = false;
@@ -103,9 +112,7 @@
 	            }
 			displayMessage(desc + "Your Score is: " + score +"\n");
 		}
-		 
-
-				
+		 		
 	//
     // Function to check an error in direction.  Ie: a wall has been reached
     // ========================================================================

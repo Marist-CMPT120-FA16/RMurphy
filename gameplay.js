@@ -5,7 +5,7 @@
 // Ruth Murphy - CMPT 120 Fall 2016
 // Final Project general game play focused file
 // Control HTML file is "Final Project-Murphy.html"
-// Last Update: November 25, 2016
+// Last Update: November 28, 2016
 
     //
     // List of Global Variables for Game
@@ -120,7 +120,6 @@
 		 displayMessage(items[currentLoc].name + " "+ "Taken.");
 	   	}
 	}			   
-
     function displayMessage(msg) {
         var target = document.getElementById("taMain");
         target.value = msg + "\n\n\n" + target.value ;  
