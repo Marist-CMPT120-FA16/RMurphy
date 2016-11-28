@@ -121,10 +121,10 @@
 		 items[currentLoc].isTaken = true;
 		 loc.hasItem = false;
 		 loc.desc=loc.descAfter
-		 displayMessage(items[currentLoc].name + " Taken: " + items[currentLoc].desc );
+		 displayMessage(items[currentLoc].name + " Taken: " + "\n" + items[currentLoc].desc );
 	   	}
 	}			   
     function displayMessage(msg) {
-        var target = document.getElementById("taMain");
+		var target = document.getElementById("taMain");
         target.value = msg + "\n\n\n" + target.value ;  
 	} 

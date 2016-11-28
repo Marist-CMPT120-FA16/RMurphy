@@ -78,7 +78,7 @@
     var pool_loc = new Location();
     pool_loc.id=4;
     pool_loc.name="Pool";
-    pool_loc.desc="You enter a room with a crystal clear pool. In the corner is a women crying.";
+    pool_loc.desc="You enter a room with a crystal clear pool." + "\n" + "In the corner is a women crying.";
     pool_loc.descAfter="You enter a room with a crystal clear pool.";
     pool_loc.item=women;
     pool_loc.hasItem= true;
@@ -88,7 +88,7 @@
     var dirtRoom_loc = new Location();
     dirtRoom_loc.id=5;
     dirtRoom_loc.name="Dirt Room";
-    dirtRoom_loc.desc="You enter a room with a dirt floor and a table. On the table is a rusty old key for some kind of lock.";
+    dirtRoom_loc.desc="You enter a room with a dirt floor and a table." + "\n" + "On the table is a rusty old key for some kind of lock.";
     dirtRoom_loc.descAfter="You enter a room with a dirt floor and a table.";
     dirtRoom_loc.item=key;
     dirtRoom_loc.hasItem= true;
@@ -108,8 +108,8 @@
     var greenRoom_loc = new Location();
     greenRoom_loc.id=7;
     greenRoom_loc.name="Room with green walls";
-    greenRoom_loc.desc="You enter a green room with what looks like red blood on the walls. You hear a far off sound. It almost sounds like people screaming for help.";
-    greenRoom_loc.descAfter="You enter a green room with what looks like red blood on the walls. You hear a far off sound. It almost sounds like people screaming for help.";
+    greenRoom_loc.desc="You enter a green room with what looks like red blood on the walls. You hear a far off sound." + "\n" + "It sounds like people screaming for help.";
+    greenRoom_loc.descAfter="You enter a green room with what looks like red blood on the walls. You hear a far off sound." + "\n" + "It sounds like people screaming for help.";
     greenRoom_loc.item="";
     greenRoom_loc.hasItem=false;
     greenRoom_loc.visted = false;
@@ -118,7 +118,7 @@
     var pentagramRm_loc = new Location();
     pentagramRm_loc.id=8;
     pentagramRm_loc.name="Pentagram Room";
-    pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.  The Book looks like something a priest would use, but the cross is upside down.";
+    pentagramRm_loc.desc="You enter a room with a pentagram on the floor." + "\n" + "You hear an eerie chanting." + "\n" + "There is a book lying on the floor.  The book looks like something a priest would use, but the cross is upside down.";
     pentagramRm_loc.descAfter="You enter a room with a pentagram on the floor. The chanting has stopped.";
     pentagramRm_loc.item=book;
     pentagramRm_loc.hasItem= true;
@@ -128,7 +128,7 @@
     var dampRoom_loc = new Location();
     dampRoom_loc.id=9;
     dampRoom_loc.name="Dark Damp Room";
-    dampRoom_loc.desc="You enter a cold, damp room.  You smell Peanut Butter. On a shelf in the room you see a sandwich. A Gooey, Yummy Peanut Butter and Jelly Sandwich";
+    dampRoom_loc.desc="You enter a cold, damp room.  You smell Peanut Butter." + "\n" + "On a shelf in the room you see a sandwich." + "\n" + "A Gooey, Yummy Peanut Butter and Jelly Sandwich." ;
     dampRoom_loc.descAfter="You enter a cold, damp room. ";
     dampRoom_loc.item=peanut;
     dampRoom_loc.hasItem=true;
@@ -162,10 +162,10 @@
      }
 		
     // Item array of current items for game.
-    var women = new Item (4, "A Crying Women", " The women agrees to come with you.", false,4);
-    var key = new Item(5, "Old Rusty Key", "An old key for a lock somewhere.", false,5);
-    var book = new Item(8, "Prayer Book", "The book looks like something a priest would use, but the cross is upside down.",false,8);
-    var peanut = new Item(9, "PB & J Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich.", false,9);
+    var women = new Item (4, " A Crying Women", " The women agrees to come with you.", false,4);
+    var key = new Item(5, " Old Rusty Key", "An old key for a lock somewhere.", false,5);
+    var book = new Item(8, " Prayer Book", "You picked up a book of Satanic prayers." + "\n" + "You look in the book and see a Bible is hidden inside.",false,8);
+    var peanut = new Item(9, " PB & J Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich.", false,9);
 
     //single array to ease calling items by name.
     var items = new Array ();
