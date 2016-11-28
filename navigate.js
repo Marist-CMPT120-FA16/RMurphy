@@ -91,9 +91,11 @@
 		var desc = loc.name + ": " + loc.desc + "\n";
           if (book.isTaken===false) {
 				displayMessage("You hear sinister whispering in your ear and you feel dizzy" );
-			} else {
+			} else if ((loc.id===5) && (book.isTaken===true)){
+				displayMessage ("The whispering in your ear has stopped. " + "\n" + "You look down and notice you have a white glow around you.")
+			  } else {
 				displayMessage("You are glowing");
-			  } 
+			    } 
 		  if ((peanut.isTaken===false) && (loc.id >=2)){
 				  displayMessage("You are getting hungry")
 			  } 

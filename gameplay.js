@@ -117,7 +117,7 @@
 		 items[currentLoc].isTaken = true;
 		 loc.hasItem = false;
 		 loc.desc=loc.descAfter
-		 displayMessage(items[currentLoc].name + " "+ "Taken.");
+		 displayMessage(items[currentLoc].name + " : "+ items[currentLoc].desc "Taken.");
 	   	}
 	}			   
     function displayMessage(msg) {
