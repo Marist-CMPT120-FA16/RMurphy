@@ -77,7 +77,7 @@
 	//location 4 - Pool
     var pool_loc = new Location();
     pool_loc.id=4;
-    pool_loc.name="Pool ";
+    pool_loc.name="Pool";
     pool_loc.desc="You enter a room with a crystal clear pool. In the corner is a women crying.";
     pool_loc.descAfter="You enter a room with a crystal clear pool.";
     pool_loc.item=women;
@@ -162,10 +162,10 @@
      }
 		
     // Item array of current items for game.
-    var women = new Item (4, " A Crying Women", " There is a women crying in the corner", false,4);
-    var key = new Item(5, " Old Rusty Key", "Rusty Old Key for some lock", false,5);
-    var book = new Item(8, " Prayer Book", "The Book looks like something a priest would use, but the cross is upside down.",false,8);
-    var peanut = new Item(9, " PB & J Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich", false,9);
+    var women = new Item (4, "A Crying Women", " The women agrees to come with you.", false,4);
+    var key = new Item(5, "Old Rusty Key", "An old key for a lock somewhere.", false,5);
+    var book = new Item(8, "Prayer Book", "The book looks like something a priest would use, but the cross is upside down.",false,8);
+    var peanut = new Item(9, "PB & J Sandwich",  "A Gooey, Yummy Peanut Butter and Jelly Sandwich.", false,9);
 
     //single array to ease calling items by name.
     var items = new Array ();
