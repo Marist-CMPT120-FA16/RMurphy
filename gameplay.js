@@ -88,13 +88,13 @@
 	     document.getElementById("btnGo_N").disabled = false;
        }
        
-    // This is an empty array so we can fill it for the player.  
+    // This is an empty array so we can fill it for the player with the items they take during the game.  
     // They will be able to tell what they have picked up during game play.
     // When needed, we can add or remove items easier.
    
    var inventory = new Array();
 
-   //
+    //
     // Function for the inventory button to display the current inventory to the user. 
     // Also called when user types in the inventory commands that are allowed.
     //
@@ -104,9 +104,13 @@
         displayMessage(msg);
       }
 
-	  // Function for the "Take" button
-    // Puts items into inventory, notifies the user that the item has been taken and updates the location description.
-    // The additional text related to the item is removed and description is updated for the player when they return to the room.
+	// Function for the "Take" button
+    // Puts items into inventory, notifies the user that the item has been taken 
+	// and updates the location description shown to player.
+    // The additional text related to the item is removed.
+	//
+	// evaluates the location, pushes item to inventory array,
+    // updates flag for the item to indicate it has been taken.
 		
     function btnTake(item) {
 	   var loc = locations[currentLoc];

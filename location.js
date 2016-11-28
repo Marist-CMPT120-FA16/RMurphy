@@ -115,14 +115,14 @@
     greenRoom_loc.visted = false;
 
 	//location 8 - Pentagram Room
-   var pentagramRm_loc = new Location();
-   pentagramRm_loc.id=8;
-   pentagramRm_loc.name="Pentagram Room";
-   pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.  The Book looks like something a priest would use, but the cross is upside down.";
-   pentagramRm_loc.descAfter="You enter a room with a pentagram on the floor. The chanting has stopped.";
-   pentagramRm_loc.item=book;
-   pentagramRm_loc.hasItem= true;
-   pentagramRm_loc.visted = false;
+    var pentagramRm_loc = new Location();
+    pentagramRm_loc.id=8;
+    pentagramRm_loc.name="Pentagram Room";
+    pentagramRm_loc.desc="You enter a room with a pentagram and a book on the floor. You hear an eerie chanting.  The Book looks like something a priest would use, but the cross is upside down.";
+    pentagramRm_loc.descAfter="You enter a room with a pentagram on the floor. The chanting has stopped.";
+    pentagramRm_loc.item=book;
+    pentagramRm_loc.hasItem= true;
+    pentagramRm_loc.visted = false;
 
 	//location 9 - Damp wet room
     var dampRoom_loc = new Location();

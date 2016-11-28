@@ -8,16 +8,17 @@
 // Last Update: November 28, 2016
 
    //
-    // List of Global Variables for Game
-    //         
+   // List of Global Variables for Game
+   //         
          var currentLoc = 0;
-		 var nextLoc = 0;
-         var score = 0;
+		 var score = 0;
          var directionErrorCount = 0;
          var limit = 5;
 	//
     // Array for the movement of the player.  This shows all of the valid moves allowed from each location.
-	// This is a location array based on direction array (Location to indv direction)
+	// This is a location array based on direction array (Location to indv direction).
+	// numbers in the array are the location numbers that are possible.  If the same number is listed as the location #
+	// then movement is not allowed.
     //		
     var validMoves = [
                         // N S E W 
@@ -63,6 +64,7 @@
 
                        
 	//This is the array for the navigation buttons to use  - on and off as player travels.
+	// Allows the buttons to be disabled.
 	var navButtons_switch = new Array(/*    N   S   E   W */
                                     /*0*/  [0,  1,  1,  1],
                                     /*1*/  [1,  0,  0,  0],
@@ -77,18 +79,20 @@
                                     /*10*/ [1,  1,  0,  1]
                                          );
 
-       // Set up of locations that will be displayed for the user.
-       //=========================================================
-       // Function look is the coordinator of when a location will be called.
-	   // it will display the location text and the players current score.
-	   // Scoring is done based on the players having been in the room already or not.
-	   //   - player gets 5 points each time they visit a room for the first time.
-       // Used with button functions/arrays and message functions to display current location desription to user.
-	   // Buttons are also disabled via this function.
-       //
+    // Set up of locations that will be displayed for the user.
+    //=========================================================
+    // Function look is the coordinator of when a location will be called.
+	// it will display the location text and the players current score.
+	// Scoring is done based on the players having been in the room already or not.
+	//   - player gets 5 points each time they visit a room for the first time.
+	//   - Bonus 5 points for returning back to the starting location.
+    // Used with button functions/arrays and message functions to display current location desription to user.
+	// Buttons are also disabled via this function.
+    //
     function look() {
         var loc = locations[currentLoc];
 		var desc = loc.name + ": " + loc.desc + "\n";
+		// game play changes depending on if an item has been taken or not
           if (book.isTaken===false) {
 				displayMessage("You hear sinister whispering in your ear and you feel dizzy" );
 			} else if ((loc.id===5) && (book.isTaken===true)){
@@ -99,10 +103,12 @@
 		  if ((peanut.isTaken===false) && (loc.id >=2)){
 				  displayMessage("You are getting hungry")
 			  } 
+		// check the location to see if it has been visted for scoring
 		  if (loc.visited === false){
 			score=score + 5;
 			loc.visited=true;
 		      }
+		// loop to disable n,s,e,w buttons when direction is not allowed
 			for (var i = 0; i < navBtns.length; i++) {
 	           var btnDisable = 0;
 	               btnDisable = navButtons_switch[currentLoc][i];
@@ -132,9 +138,4 @@
                displayMessage("Umm, Where are you going?  Pick another direction.");
             }            
         }
-
-    //
-    // Function for displying the message correctly (location and score) as we iterate through the game
-    //=================================================================================================
-	// Includes the value of the score.
-    //
+		
