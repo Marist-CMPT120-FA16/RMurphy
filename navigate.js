@@ -104,8 +104,8 @@
 				  displayMessage("You are getting hungry")
 			  } 
 		 // check if they have completed all tasks in the game.
-		 //  if (score=55) & (inventory.length=4)){
-		//	   alert("You made it!." + "\n" +  "You recevied all the points in he game. + "\n" + "All Items have been picked up.")
+		   if (score=55) & (inventory.length=4)){
+			   alert("You made it!." + "\n" +  "You recevied all the points in he game. + "\n" + "All Items have been picked up.");
 		   }
 		// check the location to see if it has been visted for scoring
 		  if (loc.visited === false){
