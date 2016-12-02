@@ -103,15 +103,14 @@
 		  if ((peanut.isTaken===false) && (loc.id >=2)){
 				  displayMessage("You are getting hungry")
 			  } 
-		 // check if they have completed all tasks in the game.
-		   if (score=55) & (inventory.length=4)){
-			   alert("You made it!." + "\n" +  "You recevied all the points in he game. + "\n" + "All Items have been picked up.");
-		   }
-		// check the location to see if it has been visted for scoring
+		 // check the location to see if it has been visted for scoring
 		  if (loc.visited === false){
 			score=score + 5;
 			loc.visited=true;
 		      }
+			  if ((score==55) && (inventory.length==4)){
+			   alert("You made it!." + "\n" +  "You recevied all the points in The game." + "\n" + "All Items have been picked up.");
+		   }
 		// loop to disable n,s,e,w buttons when direction is not allowed
 			for (var i = 0; i < navBtns.length; i++) {
 	           var btnDisable = 0;
@@ -124,7 +123,7 @@
 	            }
 			displayMessage(desc + "Your Score is: " + score +"\n");
 		}
-		 		
+		 
 	//
     // Function to check an error in direction.  Ie: a wall has been reached
     // ========================================================================

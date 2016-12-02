@@ -14,6 +14,7 @@
          var score = 0;
          var directionErrorCount = 0;
          var limit = 5;
+		
 	//
     // Command Button handler for input by user.
     //=======================================================================
@@ -123,8 +124,9 @@
 		 loc.desc=loc.descAfter
 		 displayMessage(items[currentLoc].name + " Taken: " + "\n" + items[currentLoc].desc );
 	   	}
-	}			   
-    function displayMessage(msg) {
+	}
+	
+	function displayMessage(msg) {
 		var target = document.getElementById("taMain");
         target.value = msg + "\n\n\n" + target.value ;  
 	} 
