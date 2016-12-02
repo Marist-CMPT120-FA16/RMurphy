@@ -15,13 +15,22 @@
       <title> Murphy's World </title>
 
       <!-- set up standard styles for output.  
-              Makes it easier to change styles for output to user -->
+              Makes it easier to change styles for output to user 
+			  
+			  Margins are set so that the text, box, buttons all "float" together as user
+			  changes screen size.  Otherwise as the screen changes, the elements may not move together -->
 
          <style  type ="text/css">
-               h1      { font-size: 30pt; color: red;text-align: center}
-               h3      { color: blue; font-size: 12pt;text-align:center}
-			   h4      ( text-align: center; font-size: 12pt; color: white)
-         </style>      
+               h1      { font-size: 30pt; color: red;margin-left: 200px}
+               h3      { color: blue; font-size: 14pt;margin-left:240px}
+			   h4      { font-size: 12pt; color: lightgreen; margin-left:220px}
+			   body    {
+					    background-image: url("cave.jpg");
+					    background-size: 880px 860px;
+				       }
+			  a    { color:lightblue}
+		
+        </style>      
 
           
 
@@ -34,16 +43,19 @@
     <body onload="init();">
 	      <h1> Welcome to Murphy's World! </h1>
 	      <h3> <a href= mailto:ruth.murphy1@marist.edu> Problem? Click here to send errors to Ruth Murphy</a></h3>
-		  <style>
-			body  {
-					background-image: url("cave.jpg");
-					background-size: 880px 860px;
-				  }
-		  </style>
+		  <p></p>
 		  
-		  
-       <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
-               rows="12"
+	<!-- link to an external file for a map to help the player.  The map will open in a separate screen.
+		  This avoids taking up valuable space for the game screen and text.  It also is just a cleaner look 
+	-->
+		  <h4><strong>
+		  Are You Stuck? Click here for a <a href="Map.gif" target="_blank">Map</a>.   It will open in a new window.
+		  </strong></h4> 
+		
+	<!-- set text area formatting for look and feel -->	  
+       <textarea style = "background-color: khaki;font-size:12pt; font-weight: bold; outline-style:double; outline-color:red;border-style: solid; 
+	   border-width: 20px;margin-left:110px; padding-left: 30px"
+              rows="12"
                cols="73"
                id="taMain"
                name="taMain"> Pick a direction to explore.
@@ -52,8 +64,10 @@
       <!-- Create a box for user input, a description for it, 
             and a button to indicate they are done with entry -->
 
-       <br>
-       Enter Direction:       
+       
+      
+	  <br>
+	  <p style ="color:khaki; margin-left: 110px">Enter Direction:
        <input type="text" 
               id = "txtCommand"
               name="txtCommand">
@@ -96,8 +110,7 @@
 			  
 	   <input type="button" 
               value="Help"
-              onclick="btnHelp();">
-			  
-		<h4> Are You Stuck? The <a href="Map.gif" target="_blank">Map</a> will open in a new window for you.</h4>
+              onclick="btnHelp();"></p>
+		
 	 </body>
 </html>

@@ -109,7 +109,7 @@
 			loc.visited=true;
 		      }
 			  if ((score==55) && (inventory.length==4)){
-			   alert("You made it!." + "\n" +  "You recevied all the points in The game." + "\n" + "All Items have been picked up.");
+			   alert("You made it!." + "\n" +  "You recevied all the points in Murphy's World!" + "\n" + "All Items have been picked up.");
 		   }
 		// loop to disable n,s,e,w buttons when direction is not allowed
 			for (var i = 0; i < navBtns.length; i++) {
