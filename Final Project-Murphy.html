@@ -18,8 +18,9 @@
               Makes it easier to change styles for output to user -->
 
          <style  type ="text/css">
-               h1      { font-size: 30pt; color: red;}
-               h3      { color: blue; font-size: 12pt;}
+               h1      { font-size: 30pt; color: red;text-align: center}
+               h3      { color: blue; font-size: 12pt;text-align:center}
+			   h4      ( text-align: center; font-size: 12pt; color: white)
          </style>      
 
           
@@ -33,10 +34,12 @@
     <body onload="init();">
 	      <h1> Welcome to Murphy's World! </h1>
 	      <h3> <a href= mailto:ruth.murphy1@marist.edu> Problem? Click here to send errors to Ruth Murphy</a></h3>
-		  <style body  {
-                  background-image: url("cave1.jpg");
+		  <style>
+			body  {
+					background-image: url("cave.jpg");
+					background-size: 880px 860px;
 				  }
-				  </style>
+		  </style>
 		  
 		  
        <textarea style = "background-color: powderblue;font-size:12pt; font-weight: bold;"
@@ -95,6 +98,6 @@
               value="Help"
               onclick="btnHelp();">
 			  
-		<p>	<strong> Are You Stuck? The <a href="Map.gif" target="_blank">Map</a> will open in a new window for you.</strong></p></a>
+		<h4> Are You Stuck? The <a href="Map.gif" target="_blank">Map</a> will open in a new window for you.</h4>
 	 </body>
 </html>
